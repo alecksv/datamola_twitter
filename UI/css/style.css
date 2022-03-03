@@ -13,15 +13,10 @@
 }
 :root {
   --btn-green: #2ecc71;
-}
-:root {
   --btn-green-hover: #1dbd60;
-}
-:root {
   --main-grey: #c4c4c4;
-}
-:root {
   --grey-blur: #e5e5e5;
+  --hashtag: #471cf0;
 }
 a {
   text-decoration: none;
@@ -59,5 +54,5 @@ h2 {
   box-shadow: 0 2px 4px var(--main-grey);
 }
 .hashtag {
-  color: #471cf0;
+  color: var(--hashtag);
 }

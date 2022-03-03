@@ -14,9 +14,7 @@
   --white: #fff;
   --green: rgb(53, 199, 114);
   --pink: rgb(185, 131, 241);
-}
-.roboto {
-  font-family: "Roboto", sans-serif;
+  --black: rgb(35, 35, 36);
 }
 
 .wrapper {
@@ -77,6 +75,7 @@
 }
 
 .avia-ticket__header {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -104,8 +103,9 @@
   width: 36px;
 }
 .avia-ticket__icon_red {
-  width: 24px;
-  height: 24px;
+  position: relative;
+  width: 1.5rem;
+  height: 1.5rem;
   border-radius: 100%;
   color: #f54759;
   box-shadow: 0 2px 4px var(--grey);
@@ -128,13 +128,14 @@
 .avia-ticket__inner-icon_red {
   display: flex;
   margin-right: 1rem;
+  position: relative;
 }
 .avia-ticket__icon_red:not(:first-child) {
-  margin-left: 5px;
+  margin-left: 0.3125rem;
 }
 .avia-ticket__icon_grey:first-child {
   margin-right: 0.65rem;
-  padding-top: 2px;
+  padding-top: 5px;
 }
 /* ******************************** flight********************* */
 .avia-ticket__body {
@@ -168,29 +169,6 @@
 .avia-ticket__duration {
   display: flex;
   justify-content: space-between;
-}
-.avia-ticket__airplane-up svg,
-.avia-ticket__airplane-down svg,
-.air,
-.air2,
-.ground {
-  transition: all 0.3s ease;
-}
-
-.avia-ticket__airplane-up svg:hover {
-  fill: var(--orange);
-}
-.air:hover {
-  color: var(--orange);
-}
-.air2:hover {
-  color: var(--orange);
-}
-.avia-ticket__airplane-down svg:hover {
-  fill: var(--orange);
-}
-.ground:hover {
-  color: var(--orange);
 }
 
 /* .air:hover::after {
@@ -295,7 +273,7 @@
   margin: 20px 0;
 }
 /* *************************************************************** */
-.avia-ticket__airplane-up-wrap:hover p {
+.avia-ticket__airplane-up-wrap:hover .air {
   color: var(--orange);
 }
 .avia-ticket__airplane-up-wrap:hover svg {
@@ -313,6 +291,12 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+.avia-ticket__airplane-up-wrap {
+  z-index: 10;
+}
+.avia-ticket__line-flight-up {
+  z-index: 20;
 }
 
 .duration-1 {
@@ -353,6 +337,9 @@
 }
 .avia-ticket__airplane-ground-wrap:hover .avia-ticket__line-flight-up {
   background-color: var(--orange);
+}
+.avia-ticket__airplane-ground-wrap:hover .air {
+  color: var(--orange);
 }
 .avia-ticket__line-flight-up:hover {
   border: 1px solid var(--orange);
@@ -396,4 +383,78 @@
   font-size: 0.75rem;
   text-align: center;
   font-weight: 500;
+}
+.roboto {
+  font-family: "Roboto", sans-serif;
+}
+.popup {
+  position: absolute;
+  top: -2.5rem;
+  left: -1rem;
+  /* transform: translateX(50%); */
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-width: 7rem;
+  padding: 1rem 1.5rem;
+  border-radius: 0.25rem;
+  background-color: var(--black);
+  color: var(--white);
+  font-size: 0.75rem;
+  transition: all 0.4s ease;
+  transform: translateY(2rem);
+}
+.popup:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -20px; /* Положение треугольника */
+  border: 10px solid transparent; /* Прозрачные границы */
+  border-top: 10px solid var(--black); /* Добавляем треугольник */
+}
+
+.avia-ticket__logo:hover .popup {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.airline-0 {
+  top: -2.5rem;
+  left: -1.375rem;
+}
+.airline-1 {
+  top: -2.5rem;
+  left: 1.6rem;
+}
+.avia-ticket__icon_red:hover .popup {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.bagagge {
+  top: -3.2rem;
+  left: -2.75rem;
+}
+.replace {
+  top: -5rem;
+  left: -2.75rem;
+}
+.wait {
+  min-width: 10rem;
+  top: -5.5rem;
+  left: -4.25rem;
+}
+.avia-ticket__icon_grey:hover .popup {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.bell {
+  min-width: 15rem;
+  top: -3rem;
+  left: 21rem;
 }

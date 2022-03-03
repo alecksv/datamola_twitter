@@ -1,0 +1,26 @@
+header {
+  position: sticky;
+  top: 0;
+  border: 1px solid var(--main-grey);
+  box-shadow: 0 2px 4px var(--main-grey);
+  background-color: #fff;
+  z-index: 10;
+}
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+}
+.header-content__logo {
+  height: 48px;
+  width: 79px;
+}
+.header-content__button .common-button {
+  margin-left: 20px;
+  background-color: var(--main-grey);
+}
+.header-content__log-name {
+  font-size: 18px;
+  font-weight: 600;
+}

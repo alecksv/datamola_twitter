@@ -43,8 +43,8 @@
               </div>
             </div>
           </aside>
-          <!-- *********************main part*********************** -->
-          <div class="avia-ticket__content">
+
+          <main class="avia-ticket__content">
             <!-- *****************header***************************** -->
             <div class="avia-ticket__header">
               <div class="avia-ticket__logo-container">
@@ -179,8 +179,6 @@
             <!-- *****************body******************************* -->
             <div class="avia-ticket__body">
               <div class="avia-ticket__inner-wrap">
-                <!-- *****************one way ticket********************* -->
-
                 <div class="avia-ticket__flight">
                   <div class="avia-ticket__time-dispatch">
                     <p class="avia-ticket__time">18:10</p>
@@ -191,6 +189,9 @@
                     <!-- ********************************************************* -->
                     <div class="avia-ticket__airplane-up-wrap">
                       <div class="avia-ticket__airplane-up-img">
+                        <div class="popup airplane-air">
+                          <p>Вылет из аэропорта Шереметьево</p>
+                        </div>
                         <svg
                           width="24"
                           height="24"
@@ -220,6 +221,9 @@
                           <p class="way-time_absolute">В пути: 2д 1ч 20м</p>
                         </div>
                       </div>
+                      <div class="popup airplane-replace">
+                        <p>Пересадка 8 часов в аэропорту Шереметьево</p>
+                      </div>
                       <div class="avia-ticket__line-flight-up"></div>
 
                       <div class="avia-ticket__airport">
@@ -228,6 +232,9 @@
                     </div>
                     <div class="avia-ticket__airplane-up-wrap duration-1">
                       <div class="avia-ticket__airplane-down-img">
+                        <div class="popup airplane-ground">
+                          <p>Приземление в Аэропорту Шереметьево</p>
+                        </div>
                         <svg
                           width="24"
                           height="24"
@@ -260,7 +267,6 @@
                 </div>
                 <!-- ***********************line-through ************************************-->
                 <div class="avia-ticket__line-through"></div>
-
                 <!-- ********************back ticket**************************************** -->
                 <div class="avia-ticket__flight">
                   <div class="avia-ticket__time-dispatch">
@@ -272,6 +278,9 @@
                     <!-- ********************************************************* -->
                     <div class="avia-ticket__airplane-up-wrap duration-5">
                       <div class="avia-ticket__airplane-up-img">
+                        <div class="popup airplane-air">
+                          <p>Вылет из аэропорта Кеннеди</p>
+                        </div>
                         <svg
                           width="24"
                           height="24"
@@ -302,6 +311,9 @@
                           <p class="way-time_absolute">В пути: 2д 1ч 20м</p>
                         </div>
                       </div>
+                      <div class="popup airplane-replace">
+                        <p>Пересадка 8 часов в аэропорту Шереметьево</p>
+                      </div>
                       <div class="avia-ticket__line-flight-up"></div>
 
                       <div class="avia-ticket__airport">
@@ -310,6 +322,9 @@
                     </div>
                     <div class="avia-ticket__airplane-up-wrap duration-1">
                       <div class="avia-ticket__airplane-down-img">
+                        <div class="popup airplane-ground">
+                          <p>Приземление в Аэропорту Кеннеди</p>
+                        </div>
                         <svg
                           width="24"
                           height="24"
@@ -342,7 +357,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </main>
         </article>
 
         <!-- ********************second ticket****************** -->
@@ -367,12 +382,15 @@
               </div>
             </div>
           </aside>
-          <!-- *********************main part*********************** -->
-          <div class="avia-ticket__content">
+
+          <main class="avia-ticket__content">
             <!-- *****************header***************************** -->
             <div class="avia-ticket__header">
               <div class="avia-ticket__logo-container">
                 <div class="avia-ticket__logo">
+                  <div class="popup airline-0">
+                    <p>Белавия</p>
+                  </div>
                   <img
                     class="avia-ticket__img"
                     src="https://pics.avs.io/al_square/36/36/B2@2x.png"
@@ -380,6 +398,9 @@
                   />
                 </div>
                 <div class="avia-ticket__logo">
+                  <div class="popup airline-1">
+                    <p>Аэрофлот</p>
+                  </div>
                   <img
                     class="avia-ticket__img"
                     src="	https://pics.avs.io/al_square/36/36/UT@2x.png"
@@ -424,6 +445,9 @@
                     </svg>
                   </div> -->
                   <div class="avia-ticket__icon_red">
+                    <div class="popup wait">
+                      <p>Длительное ожидание между рейсами</p>
+                    </div>
                     <svg
                       width="24"
                       height="24"
@@ -443,6 +467,12 @@
                 </div>
                 <div class="avia-ticket__inner-icon_grey">
                   <div class="avia-ticket__icon_grey ring">
+                    <div class="popup bell">
+                      <p>
+                        Подписаться на уведомления при изменении цены этого
+                        билета
+                      </p>
+                    </div>
                     <svg
                       width="20"
                       height="20"
@@ -643,7 +673,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </main>
         </article>
       </div>
     </section>

@@ -402,6 +402,9 @@
   padding: 1rem 1.5rem;
   border-radius: 0.25rem;
   background-color: var(--black);
+  /* background-color: black; */
+  z-index: 50;
+
   color: var(--white);
   font-size: 0.75rem;
   transition: all 0.4s ease;
@@ -457,4 +460,40 @@
   min-width: 15rem;
   top: -3rem;
   left: 21rem;
+}
+
+/* ****************************????????????????************** */
+.avia-ticket__airplane-up-img {
+  position: relative;
+}
+.avia-ticket__airplane-up-img:hover .popup {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.avia-ticket__airplane-up-wrap:hover .popup {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.avia-ticket__airplane-ground-wrap:hover .popup {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.airplane-ground {
+  min-width: 15rem;
+  top: -2rem;
+  left: 7.25rem;
+  z-index: 50;
+}
+.airplane-replace {
+  min-width: 15rem;
+  top: -2rem;
+  left: 3.5rem;
+}
+.airplane-air {
+  min-width: 15rem;
+  top: -2rem;
+  left: -7rem;
 }

@@ -1,0 +1,399 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Tahoma", sans-serif;
+}
+:root {
+  --blue: #0c73fe;
+  --radius: 0.65rem;
+  --grey: #cdd4de;
+  --grey-text: #9ea9b7;
+  --orange: #ff6f32;
+  --orange-hover: #e95d22;
+  --white: #fff;
+  --green: rgb(53, 199, 114);
+  --pink: rgb(185, 131, 241);
+}
+.roboto {
+  font-family: "Roboto", sans-serif;
+}
+
+.wrapper {
+  background-color: var(--grey);
+  height: 100vh;
+  padding: 2rem;
+}
+.avia-ticket__card {
+  display: flex;
+  max-width: 45.5rem;
+  min-height: 15.5rem;
+  margin: 0 auto;
+  background-color: var(--white);
+  border-radius: var(--radius);
+  margin-top: 20px;
+}
+.avia-ticket__card:hover {
+  cursor: pointer;
+}
+.avia-ticket__side {
+  position: relative;
+}
+.avia-ticket__label {
+  position: absolute;
+  top: -0.5rem;
+  left: 1rem;
+  background-color: var(--green);
+  border-radius: 2rem;
+  color: var(--white);
+  font-size: 0.85rem;
+  padding: 0.15rem 0.5rem;
+}
+.avia-ticket__side-inner {
+  padding: 1.25rem 1rem;
+  min-width: 13rem;
+}
+.avia-ticket__price {
+  display: flex;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.avia-ticket__button_choose {
+  width: 11rem;
+  height: 3rem;
+  background-color: #ff6f32;
+  border: none;
+  border-radius: 0.65rem;
+  color: var(--white);
+  margin: 0.75rem 0;
+  font-size: 1rem;
+  font-weight: 400;
+}
+.avia-ticket__button_choose:hover {
+  cursor: pointer;
+  background-color: var(--orange-hover);
+}
+
+.avia-ticket__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  padding-left: 17px;
+  width: 32.5rem;
+}
+.avia-ticket__logo-container {
+  display: flex;
+}
+.avia-ticket__icon-container {
+  display: flex;
+  justify-content: space-between;
+  line-height: 1;
+}
+
+.avia-ticket__logo:not(:first-child) {
+  margin-left: 0.75rem;
+}
+
+.avia-ticket__img {
+  display: block;
+  border-radius: 50%;
+  height: 36px;
+  width: 36px;
+}
+.avia-ticket__icon_red {
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+  color: #f54759;
+  box-shadow: 0 2px 4px var(--grey);
+}
+.avia-ticket__icon_red:hover {
+  cursor: pointer;
+}
+.avia-ticket__inner-icon_grey {
+  display: flex;
+}
+.avia-ticket__inner-icon_grey svg {
+  transition: all 0.3s ease;
+}
+
+.avia-ticket__inner-icon_grey svg:hover {
+  fill: var(--blue);
+  stroke: var(--blue);
+}
+
+.avia-ticket__inner-icon_red {
+  display: flex;
+  margin-right: 1rem;
+}
+.avia-ticket__icon_red:not(:first-child) {
+  margin-left: 5px;
+}
+.avia-ticket__icon_grey:first-child {
+  margin-right: 0.65rem;
+  padding-top: 2px;
+}
+/* ******************************** flight********************* */
+.avia-ticket__body {
+  color: var(--grey-text);
+  padding: 5px 20px 20px;
+}
+.avia-ticket__airport {
+  position: relative;
+  color: var(--blue);
+  font-weight: 500;
+}
+.avia-ticket__time {
+  color: black;
+}
+.avia-ticket__flight {
+  display: flex;
+  justify-content: space-between;
+}
+.avia-ticket__time-arrival {
+  text-align: end;
+  min-width: 6.2rem;
+}
+/* ***************************************way********************************** */
+.avia-ticket__way {
+  flex: 1 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  margin: 0 1rem;
+}
+.avia-ticket__duration {
+  display: flex;
+  justify-content: space-between;
+}
+.avia-ticket__airplane-up svg,
+.avia-ticket__airplane-down svg,
+.air,
+.air2,
+.ground {
+  transition: all 0.3s ease;
+}
+
+.avia-ticket__airplane-up svg:hover {
+  fill: var(--orange);
+}
+.air:hover {
+  color: var(--orange);
+}
+.air2:hover {
+  color: var(--orange);
+}
+.avia-ticket__airplane-down svg:hover {
+  fill: var(--orange);
+}
+.ground:hover {
+  color: var(--orange);
+}
+
+/* .air:hover::after {
+  content: "Вылет из аэропорта Минск Национальный";
+  text-align: center;
+  color: white;
+  position: absolute;
+  top: -70px;
+  left: -55px;
+  display: block;
+  width: 150px;
+  height: 50px;
+  background-color: black;
+} */
+/* .air2:hover::after {
+  content: "Вылет из аэропорта Кеннеди";
+  text-align: center;
+  color: white;
+  position: absolute;
+  top: -70px;
+  left: -55px;
+  display: block;
+  width: 150px;
+  height: 50px;
+  background-color: black;
+} */
+/* .ground:hover::after {
+  content: "Пересадка в аэропорту Шереметьево";
+  text-align: center;
+  color: white;
+  position: absolute;
+  top: -70px;
+  left: -55px;
+  display: block;
+  width: 150px;
+  height: 50px;
+  background-color: black;
+} */
+
+.avia-ticket__line-flight-wrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.avia-ticket__time {
+  font-size: 1.75rem;
+}
+.avia-ticket__city {
+  font-size: 0.75rem;
+}
+.avia-ticket__date {
+  font-size: 0.75rem;
+}
+
+.avia-ticket__line-flight_flying {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  height: 100%;
+}
+.avia-ticket__line-flight_ground {
+  flex-grow: 3;
+}
+
+.avia-ticket__line-flight {
+  height: 0.25rem;
+  min-width: 1.6rem;
+  background-color: var(--grey);
+  border-radius: 0.25rem;
+  transition: all 0.3s ease;
+}
+.avia-ticket__line-flight:hover {
+  border: 1px solid var(--orange);
+  background-color: var(--white);
+}
+.avia-ticket__airport {
+  font-size: 0.675rem;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 1rem;
+}
+.air {
+  text-align: left;
+}
+.air2 {
+  text-align: right;
+}
+.avia-ticket__line-flight_ground .avia-ticket__line-flight {
+  flex-grow: 3;
+  height: 0.1rem;
+  min-width: 1.6rem;
+  background-color: var(--grey);
+  transition: all 0.3s ease;
+}
+.avia-ticket__line-flight_ground .avia-ticket__line-flight:hover {
+  background-color: var(--orange);
+}
+/* **************line-through***************** */
+.avia-ticket__line-through {
+  height: 1px;
+  background-color: var(--grey);
+  margin: 20px 0;
+}
+/* *************************************************************** */
+.avia-ticket__airplane-up-wrap:hover p {
+  color: var(--orange);
+}
+.avia-ticket__airplane-up-wrap:hover svg {
+  fill: var(--orange);
+}
+.avia-ticket__way-back {
+  display: flex;
+  flex: 1 0 auto;
+  justify-content: space-between;
+  margin: 0 1rem;
+  position: relative;
+}
+.avia-ticket__airplane-up-wrap,
+.avia-ticket__airplane-ground-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.duration-1 {
+  flex-grow: 1;
+}
+.duration-2 {
+  flex-grow: 2;
+}
+.duration-3 {
+  flex-grow: 3;
+}
+.duration-4 {
+  flex-grow: 4;
+}
+.duration-5 {
+  flex-grow: 5;
+}
+.avia-ticket__airplane-down-img {
+  display: flex;
+  justify-content: end;
+}
+.avia-ticket__airplane-up-wrap .avia-ticket__line-flight-up {
+  height: 0.25rem;
+  min-width: 1.6rem;
+  background-color: var(--grey);
+  border-radius: 0.25rem;
+  transition: all 0.3s ease;
+}
+.avia-ticket__airplane-ground-wrap .avia-ticket__line-flight-up {
+  position: relative;
+  top: 0.125rem;
+  transform: translateY(-50%);
+  height: 0.1rem;
+  min-width: 1.6rem;
+  background-color: var(--grey);
+  border-radius: 0.25rem;
+  transition: all 0.3s ease;
+}
+.avia-ticket__airplane-ground-wrap:hover .avia-ticket__line-flight-up {
+  background-color: var(--orange);
+}
+.avia-ticket__line-flight-up:hover {
+  border: 1px solid var(--orange);
+  background-color: var(--white);
+}
+.avia-ticket__airplane-up-img,
+.avia-ticket__airplane-down-img {
+  height: 27px;
+}
+.way-time {
+  line-height: 24px;
+  text-align: center;
+}
+.first {
+  text-align: left;
+}
+.second {
+  text-align: right;
+}
+.center {
+  text-align: center;
+}
+.avia-ticket__text-test {
+  font-size: 0.75rem;
+  height: 24px;
+}
+.way-time_absolute {
+  text-align: center;
+}
+.way-time_absolute-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.faster {
+  background-color: var(--pink);
+}
+.orange {
+  color: var(--orange);
+  font-size: 0.75rem;
+  text-align: center;
+  font-weight: 500;
+}

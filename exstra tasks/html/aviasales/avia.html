@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./aviastyle.css" />
+  </head>
+
+  <body>
+    <section class="avia-ticket">
+      <div class="wrapper">
+        <!-- ************one ticket**************** -->
+        <article class="avia-ticket__card">
+          <!-- *******************aside************************** -->
+          <aside class="avia-ticket__side">
+            <div class="avia-ticket__label">
+              <p class="roboto">Самый дешевый</p>
+            </div>
+            <div class="avia-ticket__side-inner">
+              <div class="avia-ticket__price">
+                <p class="roboto">1846 Br</p>
+              </div>
+
+              <div class="avia-ticket__button">
+                <button class="avia-ticket__button_choose">
+                  Выбрать билет
+                </button>
+              </div>
+            </div>
+          </aside>
+          <!-- *********************main part*********************** -->
+          <div class="avia-ticket__content">
+            <!-- *****************header***************************** -->
+            <div class="avia-ticket__header">
+              <div class="avia-ticket__logo-container">
+                <div class="avia-ticket__logo">
+                  <img
+                    class="avia-ticket__img"
+                    src="https://pics.avs.io/al_square/36/36/B2@2x.png"
+                    alt="logo"
+                  />
+                </div>
+                <div class="avia-ticket__logo">
+                  <img
+                    class="avia-ticket__img"
+                    src="	https://pics.avs.io/al_square/36/36/UT@2x.png"
+                    alt="logo"
+                  />
+                </div>
+              </div>
+              <div class="avia-ticket__icon-container">
+                <div class="avia-ticket__inner-icon_red">
+                  <div class="avia-ticket__icon_red">
+                    <svg
+                      width="24"
+                      height="25"
+                      viewBox="0 0 24 25"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                      data-test-id="icon"
+                      class="icon_cbe9250 icon_1be8203 color-red_1be8203"
+                      aria-hidden="true"
+                    >
+                      <path
+                        clip-rule="evenodd"
+                        d="M18.499 6.71a.886.886 0 01-.886 1.535l-.767-.443-2.215 3.836-2.463 4.265a3.048 3.048 0 00-4.163 1.116l-1.196-.69 4.872-8.44 2.302 1.329 1.214-2.104a2 2 0 012.732-.732l.57.329zM9.76 20.075a1.769 1.769 0 101.769-3.063 1.769 1.769 0 00-1.769 3.063zm1.147-12.617a2 2 0 00-2.528.835l-2.872 4.975a2 2 0 00.54 2.607l4.86-8.417z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div class="avia-ticket__icon_red">
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      data-test-id="icon"
+                      class="icon_cbe9250 icon_1be8203 color-red_1be8203"
+                      aria-hidden="true"
+                    >
+                      <path
+                        clip-rule="evenodd"
+                        d="M12.458 3.75V6c3.292 0 5.958 2.685 5.958 6a5.976 5.976 0 01-.924 3.195L16.405 14.1a4.429 4.429 0 00.521-2.1c0-2.482-2.003-4.5-4.469-4.5v2.25l-2.979-3 2.979-3zM7.073 12c0 2.482 2.003 4.5 4.469 4.5v-2.25l2.979 3-2.979 3V18c-3.292 0-5.958-2.685-5.958-6 0-1.178.343-2.273.924-3.195L7.595 9.9a4.432 4.432 0 00-.521 2.1z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div class="avia-ticket__icon_red">
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      data-test-id="icon"
+                      class="icon_cbe9250 icon_1be8203 color-red_1be8203"
+                      aria-hidden="true"
+                    >
+                      <path
+                        clip-rule="evenodd"
+                        d="M8 6v3.9h.007L8 9.906l2.667 2.594L8 15.1l.007.007H8V19h8v-3.893h-.007L16 15.1l-2.667-2.6L16 9.906l-.007-.006H16V6H8zm7.013 9.667V18H9v-2.333L12.007 13l3.006 2.667zM15 7H9v1h6V7z"
+                      ></path>
+                    </svg>
+                  </div>
+                </div>
+                <div class="avia-ticket__inner-icon_grey">
+                  <div class="avia-ticket__icon_grey ring">
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M14 20C14 21.1 13.1 22 12 22C11.4696 22 10.9609 21.7893 10.5858 21.4142C10.2107 21.0391 10 20.5304 10 20H14Z"
+                        fill="#A0B0B9"
+                      ></path>
+                      <path
+                        d="M18.6354 18H5.36367L6.15243 17.1876C6.69598 16.6277 7 15.8781 7 15.0978V10.758C7 7.91096 8.43312 5.77943 10.737 5.21752L11.5 5.03141V4.246V3.545C11.5 3.21426 11.7499 3 12 3C12.2501 3 12.5 3.21426 12.5 3.545V4.245V5.0295L13.2619 5.21625C15.5576 5.77893 17 7.92209 17 10.757V15.0988C17 15.8791 17.304 16.6287 17.8476 17.1886L18.6354 18Z"
+                        stroke="#A0B0B9"
+                        stroke-width="2"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div class="avia-ticket__icon_grey">
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="#A0B0B9"
+                      xmlns="http://www.w3.org/2000/svg"
+                      data-test-id="icon"
+                      class="icon_cbe9250 ticket-sharing-desktop__share-icon"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M11.375 1.272L8.277 4.57c-.37.363-.37 1.028 0 1.391.142.152.37.242.597.212.227 0 .455-.09.625-.272L11 4.176v9.886c0 .482.5.938 1 .938s1-.41 1-.938V4.176l1.473 1.754a.886.886 0 001.25.03c.37-.363.37-.998 0-1.391l-3.098-3.297a.854.854 0 00-1.25 0z"
+                      ></path>
+                      <path
+                        d="M9 8v2H7a1 1 0 00-1 1v8a1 1 0 001 1h10a1 1 0 001-1v-8a1 1 0 00-1-1h-2V9 8h2a3 3 0 013 3v8a3 3 0 01-3 3H7a3 3 0 01-3-3v-8a3 3 0 013-3h2z"
+                      ></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- *****************body******************************* -->
+            <div class="avia-ticket__body">
+              <div class="avia-ticket__inner-wrap">
+                <!-- *****************one way ticket********************* -->
+
+                <div class="avia-ticket__flight">
+                  <div class="avia-ticket__time-dispatch">
+                    <p class="avia-ticket__time">18:10</p>
+                    <p class="avia-ticket__city">Минск</p>
+                    <p class="avia-ticket__date">7 марта 2022, пн</p>
+                  </div>
+                  <div class="avia-ticket__way-back">
+                    <!-- ********************************************************* -->
+                    <div class="avia-ticket__airplane-up-wrap">
+                      <div class="avia-ticket__airplane-up-img">
+                        <svg
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          xmlns="http://www.w3.org/2000/svg"
+                          data-test-id="icon"
+                          class="icon_cbe9250 segment-route__path-endpoint-icon"
+                          aria-hidden="true"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M16.954 9.793l-2.719 1.268c-2-.64-4.862-1.236-7.398-2.056l-1.201.55c1.32 1.029 3.135 2.33 4.52 3.408L7.439 14.23c-1.173-.248-2.418-.338-3.349-.532-.506-.106-.816.339-.338.71 2.256 1.759 3.159 2.469 3.159 2.469.392.305.875.497 1.343.283l12.445-5.803c.906-.46.871-1.106.64-1.629-.547-1.173-2.049-1.003-4.384.064z"
+                          ></path>
+                        </svg>
+                      </div>
+                      <div class="avia-ticket__line-flight-up"></div>
+
+                      <div class="avia-ticket__airport">
+                        <p class="air first">MSQ</p>
+                      </div>
+                    </div>
+                    <div class="avia-ticket__airplane-ground-wrap duration-5">
+                      <div class="avia-ticket__text-test">
+                        <div class="way-time_absolute-wrapper">
+                          <p class="way-time_absolute">В пути: 2д 1ч 20м</p>
+                        </div>
+                      </div>
+                      <div class="avia-ticket__line-flight-up"></div>
+
+                      <div class="avia-ticket__airport">
+                        <p class="air center">SVO</p>
+                      </div>
+                    </div>
+                    <div class="avia-ticket__airplane-up-wrap duration-1">
+                      <div class="avia-ticket__airplane-down-img">
+                        <svg
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          xmlns="http://www.w3.org/2000/svg"
+                          data-test-id="icon"
+                          class="icon_cbe9250 segment-route__path-endpoint-icon"
+                          aria-hidden="true"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M16.109 14.02l-2.719-1.268c-.795-1.945-2.178-4.52-3.18-6.99l-1.193-.567c.06 1.674.23 3.9.295 5.655l-2.72-1.268c-.564-1.058-1.295-2.069-1.744-2.907-.245-.456-.785-.408-.762.198.103 2.858.14 4.006.14 4.006.018.497.182.99.646 1.21l12.445 5.804c.935.398 1.407-.043 1.659-.557.547-1.173-.549-2.214-2.867-3.317z"
+                          ></path>
+                        </svg>
+                      </div>
+                      <div class="avia-ticket__line-flight-up"></div>
+
+                      <div class="avia-ticket__airport">
+                        <p class="air second">JFK</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="avia-ticket__time-arrival">
+                    <p class="avia-ticket__time">17:20</p>
+                    <p class="avia-ticket__city">Нью-Йорк</p>
+                    <p class="avia-ticket__date">8 марта 2022,</p>
+                  </div>
+                </div>
+                <!-- ***********************line-through ************************************-->
+                <div class="avia-ticket__line-through"></div>
+
+                <!-- ********************back ticket**************************************** -->
+                <div class="avia-ticket__flight">
+                  <div class="avia-ticket__time-dispatch">
+                    <p class="avia-ticket__time">20:25</p>
+                    <p class="avia-ticket__city">Нью-Йорк</p>
+                    <p class="avia-ticket__date">20 марта 2022, вс</p>
+                  </div>
+                  <div class="avia-ticket__way-back">
+                    <!-- ********************************************************* -->
+                    <div class="avia-ticket__airplane-up-wrap duration-5">
+                      <div class="avia-ticket__airplane-up-img">
+                        <svg
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          xmlns="http://www.w3.org/2000/svg"
+                          data-test-id="icon"
+                          class="icon_cbe9250 segment-route__path-endpoint-icon"
+                          aria-hidden="true"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M16.954 9.793l-2.719 1.268c-2-.64-4.862-1.236-7.398-2.056l-1.201.55c1.32 1.029 3.135 2.33 4.52 3.408L7.439 14.23c-1.173-.248-2.418-.338-3.349-.532-.506-.106-.816.339-.338.71 2.256 1.759 3.159 2.469 3.159 2.469.392.305.875.497 1.343.283l12.445-5.803c.906-.46.871-1.106.64-1.629-.547-1.173-2.049-1.003-4.384.064z"
+                          ></path>
+                        </svg>
+                      </div>
+                      <div class="avia-ticket__line-flight-up"></div>
+
+                      <div class="avia-ticket__airport">
+                        <p class="air first">JFK</p>
+                      </div>
+                    </div>
+
+                    <div class="avia-ticket__airplane-ground-wrap duration-1">
+                      <div class="avia-ticket__text-test">
+                        <div class="way-time_absolute-wrapper">
+                          <p class="way-time_absolute">В пути: 2д 1ч 20м</p>
+                        </div>
+                      </div>
+                      <div class="avia-ticket__line-flight-up"></div>
+
+                      <div class="avia-ticket__airport">
+                        <p class="air center">SVO</p>
+                      </div>
+                    </div>
+                    <div class="avia-ticket__airplane-up-wrap duration-1">
+                      <div class="avia-ticket__airplane-down-img">
+                        <svg
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          xmlns="http://www.w3.org/2000/svg"
+                          data-test-id="icon"
+                          class="icon_cbe9250 segment-route__path-endpoint-icon"
+                          aria-hidden="true"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M16.109 14.02l-2.719-1.268c-.795-1.945-2.178-4.52-3.18-6.99l-1.193-.567c.06 1.674.23 3.9.295 5.655l-2.72-1.268c-.564-1.058-1.295-2.069-1.744-2.907-.245-.456-.785-.408-.762.198.103 2.858.14 4.006.14 4.006.018.497.182.99.646 1.21l12.445 5.804c.935.398 1.407-.043 1.659-.557.547-1.173-.549-2.214-2.867-3.317z"
+                          ></path>
+                        </svg>
+                      </div>
+                      <div class="avia-ticket__line-flight-up"></div>
+
+                      <div class="avia-ticket__airport">
+                        <p class="air second">MSQ</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="avia-ticket__time-arrival">
+                    <p class="avia-ticket__time">21:35</p>
+                    <p class="avia-ticket__city">Минск</p>
+                    <p class="avia-ticket__date">21 марта 2022, пн</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+        <!-- ********************second ticket****************** -->
+
+        <article class="avia-ticket__card">
+          <!-- *******************aside************************** -->
+          <aside class="avia-ticket__side">
+            <div class="avia-ticket__label faster">
+              <p class="roboto">Самый быстрый</p>
+            </div>
+            <div class="avia-ticket__side-inner">
+              <div class="avia-ticket__price">
+                <p class="roboto">3934 Br</p>
+              </div>
+
+              <div class="avia-ticket__button">
+                <button class="avia-ticket__button_choose">
+                  Выбрать билет
+                </button>
+              </div>
+              <div class="information">
+                <p class="roboto orange">Остался 1 билет по этой цене</p>
+              </div>
+            </div>
+          </aside>
+          <!-- *********************main part*********************** -->
+          <div class="avia-ticket__content">
+            <!-- *****************header***************************** -->
+            <div class="avia-ticket__header">
+              <div class="avia-ticket__logo-container">
+                <div class="avia-ticket__logo">
+                  <img
+                    class="avia-ticket__img"
+                    src="https://pics.avs.io/al_square/36/36/B2@2x.png"
+                    alt="logo"
+                  />
+                </div>
+                <div class="avia-ticket__logo">
+                  <img
+                    class="avia-ticket__img"
+                    src="	https://pics.avs.io/al_square/36/36/UT@2x.png"
+                    alt="logo"
+                  />
+                </div>
+              </div>
+              <div class="avia-ticket__icon-container">
+                <div class="avia-ticket__inner-icon_red">
+                  <div class="avia-ticket__icon_red">
+                    <svg
+                      width="24"
+                      height="25"
+                      viewBox="0 0 24 25"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                      data-test-id="icon"
+                      class="icon_cbe9250 icon_1be8203 color-red_1be8203"
+                      aria-hidden="true"
+                    >
+                      <path
+                        clip-rule="evenodd"
+                        d="M18.499 6.71a.886.886 0 01-.886 1.535l-.767-.443-2.215 3.836-2.463 4.265a3.048 3.048 0 00-4.163 1.116l-1.196-.69 4.872-8.44 2.302 1.329 1.214-2.104a2 2 0 012.732-.732l.57.329zM9.76 20.075a1.769 1.769 0 101.769-3.063 1.769 1.769 0 00-1.769 3.063zm1.147-12.617a2 2 0 00-2.528.835l-2.872 4.975a2 2 0 00.54 2.607l4.86-8.417z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div class="avia-ticket__icon_red">
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      data-test-id="icon"
+                      class="icon_cbe9250 icon_1be8203 color-red_1be8203"
+                      aria-hidden="true"
+                    >
+                      <path
+                        clip-rule="evenodd"
+                        d="M12.458 3.75V6c3.292 0 5.958 2.685 5.958 6a5.976 5.976 0 01-.924 3.195L16.405 14.1a4.429 4.429 0 00.521-2.1c0-2.482-2.003-4.5-4.469-4.5v2.25l-2.979-3 2.979-3zM7.073 12c0 2.482 2.003 4.5 4.469 4.5v-2.25l2.979 3-2.979 3V18c-3.292 0-5.958-2.685-5.958-6 0-1.178.343-2.273.924-3.195L7.595 9.9a4.432 4.432 0 00-.521 2.1z"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div class="avia-ticket__icon_red">
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="currentColor"
+                      data-test-id="icon"
+                      class="icon_cbe9250 icon_1be8203 color-red_1be8203"
+                      aria-hidden="true"
+                    >
+                      <path
+                        clip-rule="evenodd"
+                        d="M8 6v3.9h.007L8 9.906l2.667 2.594L8 15.1l.007.007H8V19h8v-3.893h-.007L16 15.1l-2.667-2.6L16 9.906l-.007-.006H16V6H8zm7.013 9.667V18H9v-2.333L12.007 13l3.006 2.667zM15 7H9v1h6V7z"
+                      ></path>
+                    </svg>
+                  </div>
+                </div>
+                <div class="avia-ticket__inner-icon_grey">
+                  <div class="avia-ticket__icon_grey ring">
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M14 20C14 21.1 13.1 22 12 22C11.4696 22 10.9609 21.7893 10.5858 21.4142C10.2107 21.0391 10 20.5304 10 20H14Z"
+                        fill="#A0B0B9"
+                      ></path>
+                      <path
+                        d="M18.6354 18H5.36367L6.15243 17.1876C6.69598 16.6277 7 15.8781 7 15.0978V10.758C7 7.91096 8.43312 5.77943 10.737 5.21752L11.5 5.03141V4.246V3.545C11.5 3.21426 11.7499 3 12 3C12.2501 3 12.5 3.21426 12.5 3.545V4.245V5.0295L13.2619 5.21625C15.5576 5.77893 17 7.92209 17 10.757V15.0988C17 15.8791 17.304 16.6287 17.8476 17.1886L18.6354 18Z"
+                        stroke="#A0B0B9"
+                        stroke-width="2"
+                      ></path>
+                    </svg>
+                  </div>
+                  <div class="avia-ticket__icon_grey">
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="#A0B0B9"
+                      xmlns="http://www.w3.org/2000/svg"
+                      data-test-id="icon"
+                      class="icon_cbe9250 ticket-sharing-desktop__share-icon"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M11.375 1.272L8.277 4.57c-.37.363-.37 1.028 0 1.391.142.152.37.242.597.212.227 0 .455-.09.625-.272L11 4.176v9.886c0 .482.5.938 1 .938s1-.41 1-.938V4.176l1.473 1.754a.886.886 0 001.25.03c.37-.363.37-.998 0-1.391l-3.098-3.297a.854.854 0 00-1.25 0z"
+                      ></path>
+                      <path
+                        d="M9 8v2H7a1 1 0 00-1 1v8a1 1 0 001 1h10a1 1 0 001-1v-8a1 1 0 00-1-1h-2V9 8h2a3 3 0 013 3v8a3 3 0 01-3 3H7a3 3 0 01-3-3v-8a3 3 0 013-3h2z"
+                      ></path>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- *****************body******************************* -->
+            <div class="avia-ticket__body">
+              <div class="avia-ticket__inner-wrap">
+                <!-- *****************one way ticket********************* -->
+
+                <div class="avia-ticket__flight">
+                  <div class="avia-ticket__time-dispatch">
+                    <p class="avia-ticket__time">18:10</p>
+                    <p class="avia-ticket__city">Минск</p>
+                    <p class="avia-ticket__date">7 марта 2022, пн</p>
+                  </div>
+                  <div class="avia-ticket__way-back">
+                    <!-- ********************************************************* -->
+                    <div class="avia-ticket__airplane-up-wrap duration-1">
+                      <div class="avia-ticket__airplane-up-img">
+                        <svg
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          xmlns="http://www.w3.org/2000/svg"
+                          data-test-id="icon"
+                          class="icon_cbe9250 segment-route__path-endpoint-icon"
+                          aria-hidden="true"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M16.954 9.793l-2.719 1.268c-2-.64-4.862-1.236-7.398-2.056l-1.201.55c1.32 1.029 3.135 2.33 4.52 3.408L7.439 14.23c-1.173-.248-2.418-.338-3.349-.532-.506-.106-.816.339-.338.71 2.256 1.759 3.159 2.469 3.159 2.469.392.305.875.497 1.343.283l12.445-5.803c.906-.46.871-1.106.64-1.629-.547-1.173-2.049-1.003-4.384.064z"
+                          ></path>
+                        </svg>
+                      </div>
+                      <div class="avia-ticket__line-flight-up"></div>
+
+                      <div class="avia-ticket__airport">
+                        <p class="air first">MSQ</p>
+                      </div>
+                    </div>
+                    <div class="avia-ticket__airplane-ground-wrap duration-1">
+                      <div class="avia-ticket__text-test">
+                        <div class="way-time_absolute-wrapper">
+                          <p class="way-time_absolute">В пути: 2д 1ч 20м</p>
+                        </div>
+                      </div>
+                      <div class="avia-ticket__line-flight-up"></div>
+
+                      <div class="avia-ticket__airport">
+                        <p class="air center">IST</p>
+                      </div>
+                    </div>
+                    <div class="avia-ticket__airplane-up-wrap duration-3">
+                      <div class="avia-ticket__airplane-down-img">
+                        <svg
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          xmlns="http://www.w3.org/2000/svg"
+                          data-test-id="icon"
+                          class="icon_cbe9250 segment-route__path-endpoint-icon"
+                          aria-hidden="true"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M16.109 14.02l-2.719-1.268c-.795-1.945-2.178-4.52-3.18-6.99l-1.193-.567c.06 1.674.23 3.9.295 5.655l-2.72-1.268c-.564-1.058-1.295-2.069-1.744-2.907-.245-.456-.785-.408-.762.198.103 2.858.14 4.006.14 4.006.018.497.182.99.646 1.21l12.445 5.804c.935.398 1.407-.043 1.659-.557.547-1.173-.549-2.214-2.867-3.317z"
+                          ></path>
+                        </svg>
+                      </div>
+                      <div class="avia-ticket__line-flight-up"></div>
+
+                      <div class="avia-ticket__airport">
+                        <p class="air second">JFK</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="avia-ticket__time-arrival">
+                    <p class="avia-ticket__time">17:20</p>
+                    <p class="avia-ticket__city">Нью-Йорк</p>
+                    <p class="avia-ticket__date">8 марта 2022,</p>
+                  </div>
+                </div>
+                <!-- ***********************line-through ************************************-->
+                <div class="avia-ticket__line-through"></div>
+
+                <!-- ********************back ticket**************************************** -->
+                <div class="avia-ticket__flight">
+                  <div class="avia-ticket__time-dispatch">
+                    <p class="avia-ticket__time">20:25</p>
+                    <p class="avia-ticket__city">Нью-Йорк</p>
+                    <p class="avia-ticket__date">20 марта 2022, вс</p>
+                  </div>
+                  <div class="avia-ticket__way-back">
+                    <!-- ********************************************************* -->
+                    <div class="avia-ticket__airplane-up-wrap">
+                      <div class="avia-ticket__airplane-up-img">
+                        <svg
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          xmlns="http://www.w3.org/2000/svg"
+                          data-test-id="icon"
+                          class="icon_cbe9250 segment-route__path-endpoint-icon"
+                          aria-hidden="true"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M16.954 9.793l-2.719 1.268c-2-.64-4.862-1.236-7.398-2.056l-1.201.55c1.32 1.029 3.135 2.33 4.52 3.408L7.439 14.23c-1.173-.248-2.418-.338-3.349-.532-.506-.106-.816.339-.338.71 2.256 1.759 3.159 2.469 3.159 2.469.392.305.875.497 1.343.283l12.445-5.803c.906-.46.871-1.106.64-1.629-.547-1.173-2.049-1.003-4.384.064z"
+                          ></path>
+                        </svg>
+                      </div>
+                      <div class="avia-ticket__line-flight-up duration-2"></div>
+
+                      <div class="avia-ticket__airport">
+                        <p class="air first">JFK</p>
+                      </div>
+                    </div>
+                    <div class="avia-ticket__airplane-ground-wrap duration-3">
+                      <div class="avia-ticket__text-test">
+                        <div class="way-time_absolute-wrapper">
+                          <p class="way-time_absolute">В пути: 2д 1ч 20м</p>
+                        </div>
+                      </div>
+                      <div class="avia-ticket__line-flight-up"></div>
+
+                      <div class="avia-ticket__airport">
+                        <p class="air center">IST</p>
+                      </div>
+                    </div>
+                    <div class="avia-ticket__airplane-up-wrap duration-1">
+                      <div class="avia-ticket__airplane-down-img">
+                        <svg
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                          xmlns="http://www.w3.org/2000/svg"
+                          data-test-id="icon"
+                          class="icon_cbe9250 segment-route__path-endpoint-icon"
+                          aria-hidden="true"
+                        >
+                          <path
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M16.109 14.02l-2.719-1.268c-.795-1.945-2.178-4.52-3.18-6.99l-1.193-.567c.06 1.674.23 3.9.295 5.655l-2.72-1.268c-.564-1.058-1.295-2.069-1.744-2.907-.245-.456-.785-.408-.762.198.103 2.858.14 4.006.14 4.006.018.497.182.99.646 1.21l12.445 5.804c.935.398 1.407-.043 1.659-.557.547-1.173-.549-2.214-2.867-3.317z"
+                          ></path>
+                        </svg>
+                      </div>
+                      <div class="avia-ticket__line-flight-up"></div>
+
+                      <div class="avia-ticket__airport">
+                        <p class="air second">MSQ</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="avia-ticket__time-arrival">
+                    <p class="avia-ticket__time">21:35</p>
+                    <p class="avia-ticket__city">Минск</p>
+                    <p class="avia-ticket__date">21 марта 2022, пн</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </body>
+</html>

@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid var(--main-grey);
-  margin-top: 20px;
-  min-height: 50px;
+  border-top: var(--1) solid var(--main-grey);
+  margin-top: var(--20);
+  min-height: var(--50);
 }

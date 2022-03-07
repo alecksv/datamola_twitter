@@ -9,28 +9,45 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Montserrat", sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
 }
+
 :root {
   --btn-green: #2ecc71;
   --btn-green-hover: #1dbd60;
+  --green-blur: #90d6ad;
   --main-grey: #c4c4c4;
   --grey-blur: #e5e5e5;
+  --grey-dark: #aaaaaa;
   --hashtag: #471cf0;
+  --white: #fff;
+  --09375: 0.9375rem;
+  --1: 0.0625rem;
+  --2: 0.125rem;
+  --4: 0.25rem;
+  --8: 0.5rem;
+  --10: 0.625rem;
+  --18: 1.125rem;
+  --20: 1.25rem;
+  --24: 1.5rem;
+  --35: 2.1875rem;
+  --50: 3.125rem;
+  --140: 8.75rem;
 }
+
 a {
   text-decoration: none;
   color: inherit;
 }
 h2 {
-  font-size: 24px;
+  font-size: var(--24);
 }
 
 .wrapper {
-  max-width: 1200px;
+  max-width: 75rem;
   margin: 0 auto;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: var(--09375);
+  padding-right: var(--09375);
 }
 
 .main-content {
@@ -39,19 +56,19 @@ h2 {
 }
 
 .common-button {
-  width: 170px;
-  height: 35px;
+  width: 10.625rem;
+  height: var(--35);
   background-color: var(--btn-green);
-  border-radius: 4px;
-  font-size: 18px;
+  border-radius: var(--4);
+  font-size: var(--18);
   font-weight: 600;
-  color: #fff;
-  border: 1px solid var(--main-grey);
+  color: var(--white);
+  border: var(--1) solid var(--main-grey);
   cursor: pointer;
 }
 .common-button:hover {
   background-color: var(--btn-green-hover);
-  box-shadow: 0 2px 4px var(--main-grey);
+  box-shadow: 0 var(--2) var(--4) var(--main-grey);
 }
 .hashtag {
   color: var(--hashtag);

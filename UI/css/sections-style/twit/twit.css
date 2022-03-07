@@ -3,24 +3,24 @@
   justify-content: center;
 }
 .twit-content {
-  margin-top: 20px;
-  border: 1px solid var(--main-grey);
-  border-radius: 8px;
-  box-shadow: 0 4px 4px var(--main-grey);
+  margin-top: var(--20);
+  border: var(--1) solid var(--main-grey);
+  border-radius: var(--8);
+  box-shadow: 0 var(--4) var(--4) var(--main-grey);
 }
 .twit-header {
   position: relative;
   display: flex;
   justify-content: center;
-  width: 700px;
+  width: 43.75rem;
 }
 .twit-header__arrow {
-  margin-right: 20px;
-  padding-left: 35px;
+  margin-right: var(--20);
+  padding-left: var(--35);
 }
 .twit-content__title {
-  padding: 20px 0;
-  margin-left: 15px;
+  padding: var(--20) 0;
+  margin-left: var(--09375);
 }
 .twit-content__inner-wrapper {
   position: absolute;
@@ -33,14 +33,14 @@
 }
 
 .twit-message .message-content__item {
-  min-width: 700px;
-  min-height: 150px;
+  min-width: 43.75rem;
+  min-height: 9.375rem;
   border: none;
   border-radius: 0;
   box-shadow: none;
-  border-bottom: 1px solid var(--grey-blur);
+  border-bottom: var(--1) solid var(--grey-blur);
   cursor: pointer;
-  padding: 20px 20px 20px 35px;
+  padding: var(--20) var(--20) var(--20) var(--35);
 }
 .twit-content .message-content__textarea {
   border-bottom: none;

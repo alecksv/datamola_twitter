@@ -1,26 +1,26 @@
 header {
   position: sticky;
   top: 0;
-  border: 1px solid var(--main-grey);
-  box-shadow: 0 2px 4px var(--main-grey);
-  background-color: #fff;
+  border: var(--1) solid var(--main-grey);
+  box-shadow: 0 var(--2) var(--4) var(--main-grey);
+  background-color: var(--white);
   z-index: 10;
 }
 .header-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 60px;
+  height: 3.75rem;
 }
 .header-content__logo {
-  height: 48px;
-  width: 79px;
+  height: 3rem;
+  width: 4.9375rem;
 }
 .header-content__button .common-button {
-  margin-left: 20px;
+  margin-left: var(--20);
   background-color: var(--main-grey);
 }
 .header-content__log-name {
-  font-size: 18px;
+  font-size: var(--18);
   font-weight: 600;
 }

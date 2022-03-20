@@ -276,16 +276,28 @@ const tweets = [
         createdAt: new Date("2022-03-10T12:05:05"),
         author: "Boss",
       },
+      {
+        id: "t-19 c-2",
+        text: "I’m with you! Coffeman let’s go!!!",
+        createdAt: new Date("2022-03-10T12:05:05"),
+        author: "Boss",
+      },
     ],
   },
   {
     id: "t-20",
-    text: " Yeahhhh #coffee !",
+    text: "Yeahhhh #coffee !",
     createdAt: new Date("2022-03-10T12:06:20"),
     author: "Alex",
     comments: [
       {
         id: "t-20 c-1",
+        text: "I’m with you! Coffeman let’s go!!!",
+        createdAt: new Date("2022-03-10T12:06:25"),
+        author: "Boss",
+      },
+      {
+        id: "t-20 c-2",
         text: "I’m with you! Coffeman let’s go!!!",
         createdAt: new Date("2022-03-10T12:06:25"),
         author: "Boss",
@@ -299,77 +311,167 @@ const module = (function (arr) {
   let skip = 0;
   let top = 10;
   let filterConfigObject = {
-    author: "name",
-    dateFrom: "2022-03-10T12:00:05",
-    hashtags: "#coffee",
-    text: "Coffeman let’s go",
+    // author: "al",
+    dateFrom: new Date("2022-03-10T12:00:05"),
+    dateTo: new Date("2022-03-10T12:03:05"),
+    hashtags: "#fa",
+    // text: "go",
   };
 
   const getTweets = (skip, top, filterConfig) => {
-    // let arrClone = JSON.parse(JSON.stringify(arr));
     let arrClone = arr.concat();
 
     if (filterConfig.dateFrom) {
-      let searchTweetToDate = arrClone.filter((obj) => {
+      arrClone = arrClone.filter((obj) => {
         let startDatePoint = Date.parse(filterConfig.dateFrom);
         let checkDateCreatingTweet = Date.parse(obj.createdAt);
-        if (checkDateCreatingTweet > startDatePoint) {
-          return obj;
-        }
+        let endDatePoint = Date.parse(filterConfig.dateTo);
+
+        return (
+          (checkDateCreatingTweet > startDatePoint &&
+            endDatePoint > checkDateCreatingTweet) ||
+          (!endDatePoint && checkDateCreatingTweet > startDatePoint)
+        );
       });
-      arrClone = searchTweetToDate;
-      // console.log(arrClone);
     }
     if (filterConfig.author) {
-      let filterAuthor = arrClone.filter((obj) => {
-        if (obj.author.indexOf(filterConfig.author) != -1) return obj;
+      arrClone = arrClone.filter((obj) => {
+        return obj.author
+          .toUpperCase()
+          .includes(filterConfig.author.toUpperCase());
       });
-      arrClone = filterAuthor;
-      // console.log(arrClone);
     }
     if (filterConfig.text) {
-      let filterText = arrClone.filter((obj) => {
-        if (obj.text.indexOf(filterConfig.text.trim()) != -1) {
-          return obj;
-        }
+      arrClone = arrClone.filter((obj) => {
+        return obj.text
+          .toUpperCase()
+          .includes(filterConfig.text.trim().toUpperCase());
       });
-      arrClone = filterText;
-      // console.log(filterText);
     }
     if (filterConfig.hashtags) {
-      let filterHashtag = arrClone.filter((obj) => {
-        if (obj.text.indexOf(filterConfig.hashtags.trim()) != -1) {
-          return obj;
-        }
+      arrClone = arrClone.filter((obj) => {
+        return obj.text
+          .toUpperCase()
+          .includes(filterConfig.hashtags.trim().toUpperCase());
       });
-      arrClone = filterHashtag;
-      // console.log(arrClone);
     }
-    // console.log(arrClone);
-    arrClone = arrClone.slice(skip, top);
-    console.log(arrClone);
+    arrClone = arrClone.slice(skip, skip + top);
   };
-  // ********************* test geTweets *************************
-  getTweets(skip, top, {
-    author: "lex",
-    // text: " coff",
-    dateFrom: "2022-03-10T11:00:05",
-    // hashtags: " #fanta",
-  });
+
+  getTweets(skip, top, filterConfigObject);
 
   // ***************************************************************************************
+  const getTweet = (id) => {
+    return arr.filter((obj) => {
+      return obj.id === id;
+    });
+  };
+  getTweet("t-12");
+  // ************************************************************************************
   const validateTweet = (tw) => {
-    console.log();
+    if (!tw) return false;
+    let arrId = arr.filter((obj) => {
+      return obj.id === tw.id;
+    });
+    return (
+      typeof tw.id === "string" &&
+      arrId.length > 0 &&
+      tw.text.length < 280 &&
+      typeof tw.text === "string" &&
+      typeof tw.createdAt === "object" &&
+      typeof tw.author === "string" &&
+      typeof tw.comments === "object"
+    );
   };
-  validateTweet();
-
+  // ********************************************************************************
   const addTweet = (text) => {
-    console.log();
-  };
-  addTweet();
+    let newTweet = {};
+    newTweet.id = "t-" + Date.now();
+    newTweet.text = text;
+    newTweet.createdAt = new Date();
+    newTweet.author = user;
+    newTweet.comments = [];
 
-  const editTweet = (id, text) => {
-    console.log();
+    if (validateTweet(newTweet)) {
+      arr.push(newTweet);
+      return true;
+    }
   };
-  editTweet();
+  addTweet("let add tweet");
+  // *****************************************************************************
+  const editTweet = (id, text) => {
+    let idTexttweet = arr.filter((obj) => {
+      if (obj.id === id && obj.author === user) {
+        obj.text = text;
+        return obj;
+      }
+    });
+    return validateTweet(idTexttweet[0]) && idTexttweet.length ? true : false;
+  };
+  editTweet("t-20", "OMG!!!");
+
+  // ****************************************************************************
+  const removeTweet = (id) => {
+    let item;
+    let removeTweetitem = arr.filter((obj, i) => {
+      if (obj.id === id && obj.author === user) {
+        item = i;
+        return obj;
+      }
+    });
+
+    if (removeTweetitem.length > 0) {
+      arr.splice(item, 1);
+      return true;
+    } else {
+      return false;
+    }
+  };
+  console.log(removeTweet("t-20"));
+  // *************************************************************************
+  const validateComment = (com) => {
+    if (!com) return false;
+
+    return (
+      typeof com.id === "string" &&
+      com.text.length < 280 &&
+      typeof com.text === "string" &&
+      typeof com.createdAt === "object" &&
+      typeof com.author === "string"
+    );
+  };
+
+  console.log(validateComment(arr[18]["comments"][3]));
+  // ****************************************************************************
+  const addComment = (id, text) => {
+    let addCommentToTweet = {};
+    addCommentToTweet.id = id;
+    addCommentToTweet.text = text;
+    addCommentToTweet.createdAt = new Date();
+    addCommentToTweet.author = user;
+    console.log(addCommentToTweet);
+
+    if (validateComment(addCommentToTweet)) {
+      arr.map((obj) => {
+        if (obj.id === id) obj.comments.push(addCommentToTweet);
+      });
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  console.log(addComment("t-18", "Wa wa wa!!!"));
+  console.log(arr[17]);
+
+  return {
+    getTweets,
+    getTweet,
+    validateTweet,
+    addTweet,
+    editTweet,
+    removeTweet,
+    validateComment,
+    addComment,
+  };
 })(tweets);

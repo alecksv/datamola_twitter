@@ -1,11 +1,11 @@
-const array = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
+const array = [-2, 1, 4, -4, 3, 2, -1, -1, -5, -4];
 
 const searchArrMaxSum = (arr) => {
   let maxSum = 0;
   let finishSum = 0;
   for (let num of arr) {
     finishSum += num;
-    if (finishSum < 0) finishSum = 0;
+    if (finishSum < num) finishSum = num;
     if (maxSum > finishSum) {
       maxSum = maxSum;
     } else {
@@ -15,6 +15,8 @@ const searchArrMaxSum = (arr) => {
   return maxSum;
 };
 console.log(searchArrMaxSum(array));
+
+// *********************************************************
 
 const billArr = [7, 1, 5, 3, 6, 4];
 

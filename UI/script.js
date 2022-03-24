@@ -355,7 +355,7 @@ const module = (function (arr) {
           .includes(filterConfig.hashtags.trim().toUpperCase());
       });
     }
-    arrClone = arrClone.slice(skip, skip + top);
+    return (arrClone = arrClone.slice(skip, skip + top));
   };
 
   getTweets(skip, top, filterConfigObject);

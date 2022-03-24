@@ -14,7 +14,7 @@ const searchArrMaxSum = (arr) => {
   }
   return maxSum;
 };
-console.log(searchArrMaxSum(array));
+// console.log(searchArrMaxSum(array));
 
 // *********************************************************
 
@@ -32,4 +32,21 @@ const getBenefit = (arr) => {
   return benefit;
 };
 
-console.log(getBenefit(billArr));
+// console.log(getBenefit(billArr));
+
+// ******************************************** Задание №2  *****   24.03.2022
+
+function add(x, y) {
+  return x + y;
+}
+function mul(x, y) {
+  return x * y;
+}
+function sub(x, y) {
+  return x - y;
+}
+function div(x, y) {
+  return x / y;
+}
+let q = add(1, 2);
+console.log(q);

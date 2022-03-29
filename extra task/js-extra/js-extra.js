@@ -3,7 +3,7 @@ const array = [-2, 1, 4, -4, 3, 2, -1, -1, -5, -4];
 const searchArrMaxSum = (arr) => {
   let maxSum = 0;
   let finishSum = 0;
-  for (let num of arr) {
+  for (const num of arr) {
     finishSum += num;
     if (finishSum < num) finishSum = num;
     if (maxSum > finishSum) {
@@ -48,5 +48,5 @@ function sub(x, y) {
 function div(x, y) {
   return x / y;
 }
-let q = add(1, 2);
+const q = add(1, 2);
 console.log(q);

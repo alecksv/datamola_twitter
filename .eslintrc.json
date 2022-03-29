@@ -13,15 +13,19 @@
         "sourceType": "module"
     },
     "rules": {
-        "no-underscore-dangle": [
-            "error",
-            {
-                "allow": [
-                    "foo_",
-                    "_bar"
-                ]
-            }
-        ]
+        "no-underscore-dangle": ["off"],
+        "linebreak-style":["off"],
+        "max-classes-per-file":["off"],
+        "no-shadow":["off"],
+        "max-len":["off"],
+        "no-console":["off"],
+        "no-unused-vars":["off"],
+        "valid-typeof":["off"],
+        "no-plusplus":["off"],
+        "consistent-return":["off"],
+        "array-callback-return":["off"],
+        "no-param-reassign":["off"],
+        "no-unreachable-loop":["off"]
         
     }
 }

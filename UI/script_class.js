@@ -1,5 +1,3 @@
-/* eslint-disable [no-underscore-dangle] */
-const newTweets = [];
 const tweets = [
   {
     id: 't-1',
@@ -21,26 +19,7 @@ const tweets = [
       },
     ],
   },
-  {
-    id: 't-2',
-    text: 'Let’s have a break! Go out for #coffee !',
-    createdAt: new Date('2022-03-10T09:02:10'),
-    author: 'Boss',
-    comments: [
-      {
-        id: 't-2 c-1',
-        text: 'I’m with you! Coffeman let’s go!!!',
-        createdAt: new Date('2022-03-10T09:02:15'),
-        author: 'Alex',
-      },
-      {
-        id: 't-2 c-2',
-        text: 'Yeahhhh!!!',
-        createdAt: new Date('2022-03-09T10:00:16'),
-        author: 'Tom',
-      },
-    ],
-  },
+
   {
     id: 't-3',
     text: ' Go out for #coffee !',
@@ -94,6 +73,26 @@ const tweets = [
         text: 'I’m with you! Coffeman let’s go!!!',
         createdAt: new Date('2022-03-10T12:00:15'),
         author: 'Boss',
+      },
+    ],
+  },
+  {
+    id: 't-2',
+    text: 'Let’s have a break! Go out for #coffee !',
+    createdAt: new Date('2022-03-10T09:02:10'),
+    author: 'Boss',
+    comments: [
+      {
+        id: 't-2 c-1',
+        text: 'I’m with you! Coffeman let’s go!!!',
+        createdAt: new Date('2022-03-10T09:02:15'),
+        author: 'Alex',
+      },
+      {
+        id: 't-2 c-2',
+        text: 'Yeahhhh!!!',
+        createdAt: new Date('2022-03-09T10:00:16'),
+        author: 'Tom',
       },
     ],
   },
@@ -239,9 +238,9 @@ const tweets = [
   },
   {
     id: 't-17',
-    text: ' Go out for #coffee !',
+    text: ' Go out for #coffee #fanta #sprite !',
     createdAt: new Date('2022-03-10T12:03:01'),
-    author: 17,
+    author: 'Boss',
     comments: [
       {
         id: 't-17 c-1',
@@ -267,9 +266,9 @@ const tweets = [
   },
   {
     id: 't-19',
-    text: 'coffee Go out for #tea !',
+    text: 'coffee Go out for #tea #coffee !',
     createdAt: new Date('2022-03-10T12:05:01'),
-    author: 'Tom',
+    author: 'Boss',
     comments: [],
   },
   {
@@ -297,192 +296,224 @@ const tweets = [
 // *********************************************
 
 class Tweet {
-  constructor(id, text, createdAt, author, comments) {
-    this._id = id;
-    this._createdAt = createdAt;
-    this._author = author;
+  #author;
+
+  #id;
+
+  #createdAt;
+
+  constructor(id, createdAt, text, author, comments) {
+    this.#id = id;
+    this.#createdAt = createdAt;
+    this.#author = author;
+    this.comments = [];
     this.text = text;
-    this.comments = comments;
   }
 
   get id() {
-    return this._id;
-  }
-
-  set id(value) {
-    if (value !== this._id) {
-      throw new Error(`id ${value} is not correct`);
-    }
+    return this.#id;
   }
 
   get author() {
-    return this._author;
-  }
-
-  set author(value) {
-    if (value !== this._author) {
-      throw new Error(`Author ${value} is not correct`);
-    }
+    return this.#author;
   }
 
   get createdAt() {
-    return new Date();
-  }
-
-  set createdAt(value) {
-    if (value !== this._createdAt) {
-      throw new Error(`CreatedAt ${value} is not correct`);
-    }
+    return this.#createdAt;
   }
 
   static validate(tw) {
     if (!tw) return false;
+
     return (
-      typeof tw.id === 'string' &&
-      tw.text.length < 280 &&
-      typeof tw.text === 'string' &&
-      typeof tw.createdAt === 'object' &&
-      typeof tw.author === 'string' &&
-      typeof tw.comments === 'object'
+      typeof tw.id === 'string'
+      && typeof tw.text === 'string'
+      && tw.createdAt instanceof Object
+      && typeof tw.author === 'string'
+      && tw.comments instanceof Array
+      && typeof tw.comments !== null
+      && typeof tw.createdAt !== null
+      && tw.author.length > 0
+      && tw.text.length < 280
+      && tw.text.length > 0
     );
   }
 }
 
 const oneMoreTweet = new Tweet(
-  `t-${Date.now()}`,
-  'hi!',
+  `tweet-${Date.now()}`,
   new Date(),
+  'hi!',
   'Alex',
-  {}
 );
-console.log(oneMoreTweet);
-console.log(Tweet.validate(tweets[0]));
 
 // ********************************* comment *****************************
 // *************************************************************************
 
 class Comment {
-  constructor(id, createdAt, author, text) {
-    this._id = id;
-    this._author = author;
-    this._createdAt = createdAt;
+  #id;
+
+  #author;
+
+  #createdAt;
+
+  constructor(id, createdAt, text, author) {
+    this.#id = id;
+    this.#createdAt = createdAt;
+    this.#author = author;
     this.text = text;
   }
 
   get id() {
-    return this._id;
-  }
-
-  set id(value) {
-    if (value !== this._id) {
-      throw new Error(`id ${value} is not correct`);
-    }
+    return this.#id;
   }
 
   get createdAt() {
-    return new Date();
-  }
-
-  set createdAt(value) {
-    if (value !== this._createdAt) {
-      throw new Error(`CreatedAt ${value} is not correct`);
-    }
+    return this.#createdAt;
   }
 
   get author() {
-    return this._author;
-  }
-
-  set author(value) {
-    if (value !== this._author) {
-      throw new Error(`Author ${value} is not correct`);
-    }
+    return this.#author;
   }
 
   static validate(com) {
     if (!com) return false;
 
     return (
-      typeof com.id === 'string' &&
-      com.text.length < 280 &&
-      typeof com.text === 'string' &&
-      typeof com.createdAt === 'object' &&
-      typeof com.author === 'string'
+      typeof com.id === 'string'
+      && typeof com.text === 'string'
+      && com.createdAt instanceof Object
+      && typeof com.author === 'string'
+      && typeof com.createdAt !== null
+      && com.author.length > 0
+      && com.text.length < 280
+      && com.text.length > 0
     );
   }
 }
 
 const oneMoreComment = new Comment(
-  `t-${Date.now()}`,
+  `comment-${Date.now()}`,
   new Date(),
+  'Matrix! Morphius!',
   'Neo',
-  'Matrix!'
 );
 console.log(oneMoreComment);
-console.log(Comment.validate(tweets[0].comments[17]));
+console.log(Comment.validate(tweets[19].comments[1]));
 console.log(tweets[18].comments);
 
 // ********************************************* TweetCollection************
 // *************************************************************************
+
 class TweetCollection {
   constructor(tweets = []) {
     this._tweets = tweets;
   }
 
-  getPage(skip, top, filterConfig) {
-    if (filterConfig.dateFrom) {
-      this._tweets.filter((obj) => {
-        const startDatePoint = Date.parse(filterConfig.dateFrom);
-        const checkDateCreatingTweet = Date.parse(obj.createdAt);
-        const endDatePoint = Date.parse(filterConfig.dateTo);
+  getPage(filterConfig, skip = 0, top = 10) {
+    let filterTweets = this._tweets;
 
-        return (
-          (checkDateCreatingTweet > startDatePoint &&
-            endDatePoint > checkDateCreatingTweet) ||
-          (!endDatePoint && checkDateCreatingTweet > startDatePoint)
-        );
-      });
-    }
-    if (filterConfig.author) {
-      this._tweets.filter((obj) =>
-        obj.author.toUpperCase().includes(filterConfig.author.toUpperCase())
-      );
-    }
-    if (filterConfig.text) {
-      this._tweets.filter((obj) =>
-        obj.text.toUpperCase().includes(filterConfig.text.trim().toUpperCase())
-      );
-    }
-    if (filterConfig.hashtags) {
-      this._tweets.filter((obj) =>
-        obj.text
+    if (
+      filterConfig?.dateFrom
+      || filterConfig?.dateTo
+      || filterConfig?.author
+      || filterConfig?.text
+      || filterConfig?.hashtags
+    ) {
+      let checkDateCreatingTweet;
+      const startDatePoint = Date.parse(filterConfig?.dateFrom);
+      const endDatePoint = Date.parse(filterConfig?.dateTo);
+      let dateFromTweets;
+      let dateFromFlag = false;
+      let dateToFlag = false;
+
+      if (filterConfig?.dateFrom) {
+        dateFromFlag = true;
+
+        dateFromTweets = filterTweets.filter((obj) => {
+          checkDateCreatingTweet = Date.parse(obj.createdAt);
+
+          return checkDateCreatingTweet > startDatePoint;
+        });
+        filterTweets = dateFromTweets;
+        console.log(filterTweets);
+      }
+
+      if (filterConfig?.dateTo) {
+        dateToFlag = true;
+
+        const dateToTweets = filterTweets.filter((obj) => {
+          checkDateCreatingTweet = Date.parse(obj.createdAt);
+          return endDatePoint > checkDateCreatingTweet;
+        });
+        console.log(dateToTweets);
+
+        filterTweets = dateToTweets;
+        console.log(filterTweets);
+      }
+
+      if (filterConfig?.author) {
+        const authorTweets = filterTweets.filter((obj) => obj.author.toUpperCase().includes(filterConfig.author.toUpperCase()));
+        filterTweets = authorTweets;
+        console.log(filterTweets);
+      }
+
+      if (filterConfig?.text) {
+        const textTweets = filterTweets.filter((obj) => obj.text
           .toUpperCase()
-          .includes(filterConfig.hashtags.trim().toUpperCase())
-      );
+          .includes(filterConfig.text.trim().toUpperCase()));
+        filterTweets = textTweets;
+      }
+
+      if (filterConfig?.hashtags) {
+        console.log(filterConfig?.hashtags);
+        const hashtagTweets = filterTweets.filter((obj) => {
+          for (let i = 0; i < filterConfig.hashtags.length; i++) {
+            return obj.text
+              .toUpperCase()
+              .includes(filterConfig.hashtags[i].trim().toUpperCase());
+          }
+        });
+
+        filterTweets = hashtagTweets;
+      }
+
+      return filterTweets.slice(skip, skip + top);
     }
-    return this._tweets.slice(skip, skip + top);
+
+    if (!filterConfig?.author) {
+      filterTweets.sort(
+        (a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt),
+      );
+      console.log(filterTweets);
+      return filterTweets.slice(skip, skip + top);
+    }
   }
 
   get(id) {
-    return this._tweets.filter((obj) => obj.id === id);
+    return this._tweets.find((obj) => obj.id === id);
   }
 
   add(text, _user) {
-    const newTweet = new Tweet(`t-${Date.now()}`, text, new Date(), _user, {});
+    const newTweet = new Tweet(`t-${Date.now()}`, new Date(), text, _user, {});
     if (Tweet.validate(newTweet)) {
       this._tweets.push(newTweet);
       return true;
     }
   }
 
-  edit(id, text, _user) {
+  edit(id, text) {
     const idTextTweet = this._tweets.filter((obj) => {
-      if (obj.id === id && obj.author === _user) {
-        obj.text = text;
+      if (obj.id === id) {
+        if (text.length < 280 && text.length > 0) {
+          obj.text = text;
+        }
         return obj;
       }
     });
-    return !!(Tweet.validate(idTextTweet[0]) && idTextTweet.length);
+    console.log(idTextTweet);
+
+    return !!(Tweet.validate(idTextTweet[0]) && idTextTweet[0].text.length);
   }
 
   remove(id, _user) {
@@ -502,50 +533,51 @@ class TweetCollection {
   }
 
   addComment(id, _user, text) {
-    const addCommentToTweet = new Comment(id, new Date(), _user, text);
+    const addCommentToTweet = new Comment(
+      `comment-${Date.now()}`,
+      new Date(),
+      _user,
+      text,
+    );
     if (Comment.validate(addCommentToTweet)) {
       this._tweets.map((obj) => {
-        if (obj.id === id) obj.comments.push(addCommentToTweet);
+        if (obj.id === id) {
+          obj.comments.push(addCommentToTweet);
+        }
       });
       return true;
     }
     return false;
   }
 
-  addAll(arr) {
-    let nonValidTweets = [];
+  addAll() {
+    const nonValidTweets = [];
 
-    if (arr.length === 0) return (nonValidTweets = []);
-    arr.filter((tw) => {
-      if (
-        typeof tw.id === 'string' &&
-        tw.text.length < 280 &&
-        typeof tw.text === 'string' &&
-        typeof tw.createdAt === 'object' &&
-        typeof tw.author === 'string' &&
-        typeof tw.comments === 'object'
-      ) {
-        arr.push(tw);
-      } else {
-        nonValidTweets.push(tw);
+    if (this._tweets.length === 0) return nonValidTweets;
+    this._tweets.filter((tw) => {
+      if (Tweet.validate(tw)) {
+        this._tweets.push(tw);
       }
+      return nonValidTweets.push(tw);
     });
     return nonValidTweets;
   }
 
   clear() {
-    this._tweets.length = 0;
+    this._tweets = [];
   }
 }
 const filterConfigObject = {
-  // author: "al",
-  // dateFrom: new Date("2022-03-10T12:00:05"),
-  // dateTo: new Date("2022-03-10T12:03:05"),
-  // hashtags: "#fa",
-  // text: "go",
+  // author: 'alex',
+  // dateFrom: new Date('2022-03-10T12:00:05'),
+  // dateTo: new Date('2022-03-10T12:00:15'),
+  hashtags: ['#spr', '#fan'],
+  // text: ' ',
 };
 const twCol = new TweetCollection(tweets);
-console.log(twCol.add('cooooool', "'Alex'"));
 console.log(twCol);
-twCol.clear();
-console.log(twCol);
+// console.log(twCol.getPage(filterConfigObject, 0, 10));
+console.log(twCol.addAll());
+// console.log(twCol.getPage(filterConfigObject, 0, 10));
+console.log(twCol.addComment('t-17', 'TRex', 'King of dinosaurus'));
+console.log(twCol.remove('t-18', 'Neo'));

@@ -1,4 +1,4 @@
-const tweets = [
+export const tweets = [
   {
     id: 't-1',
     text: 'Let’s have a break! Go out for #coffee !',
@@ -295,7 +295,7 @@ const tweets = [
 // ******************************** tweet ******
 // *********************************************
 
-class Tweet {
+export class Tweet {
   #author;
 
   #id;
@@ -326,16 +326,16 @@ class Tweet {
     if (!tw) return false;
 
     return (
-      typeof tw.id === 'string'
-      && typeof tw.text === 'string'
-      && tw.createdAt instanceof Object
-      && typeof tw.author === 'string'
-      && tw.comments instanceof Array
-      && typeof tw.comments !== null
-      && typeof tw.createdAt !== null
-      && tw.author.length > 0
-      && tw.text.length < 280
-      && tw.text.length > 0
+      typeof tw.id === 'string' &&
+      typeof tw.text === 'string' &&
+      tw.createdAt instanceof Object &&
+      typeof tw.author === 'string' &&
+      tw.comments instanceof Array &&
+      typeof tw.comments !== null &&
+      typeof tw.createdAt !== null &&
+      tw.author.length > 0 &&
+      tw.text.length < 280 &&
+      tw.text.length > 0
     );
   }
 }
@@ -344,13 +344,13 @@ const oneMoreTweet = new Tweet(
   `tweet-${Date.now()}`,
   new Date(),
   'hi!',
-  'Alex',
+  'Alex'
 );
 
 // ********************************* comment *****************************
 // *************************************************************************
 
-class Comment {
+export class Comment {
   #id;
 
   #author;
@@ -380,14 +380,14 @@ class Comment {
     if (!com) return false;
 
     return (
-      typeof com.id === 'string'
-      && typeof com.text === 'string'
-      && com.createdAt instanceof Object
-      && typeof com.author === 'string'
-      && typeof com.createdAt !== null
-      && com.author.length > 0
-      && com.text.length < 280
-      && com.text.length > 0
+      typeof com.id === 'string' &&
+      typeof com.text === 'string' &&
+      com.createdAt instanceof Object &&
+      typeof com.author === 'string' &&
+      typeof com.createdAt !== null &&
+      com.author.length > 0 &&
+      com.text.length < 280 &&
+      com.text.length > 0
     );
   }
 }
@@ -396,7 +396,7 @@ const oneMoreComment = new Comment(
   `comment-${Date.now()}`,
   new Date(),
   'Matrix! Morphius!',
-  'Neo',
+  'Neo'
 );
 console.log(oneMoreComment);
 console.log(Comment.validate(tweets[19].comments[1]));
@@ -405,7 +405,7 @@ console.log(tweets[18].comments);
 // ********************************************* TweetCollection************
 // *************************************************************************
 
-class TweetCollection {
+export class TweetCollection {
   constructor(tweets = []) {
     this._tweets = tweets;
   }
@@ -414,11 +414,11 @@ class TweetCollection {
     let filterTweets = this._tweets;
 
     if (
-      filterConfig?.dateFrom
-      || filterConfig?.dateTo
-      || filterConfig?.author
-      || filterConfig?.text
-      || filterConfig?.hashtags
+      filterConfig?.dateFrom ||
+      filterConfig?.dateTo ||
+      filterConfig?.author ||
+      filterConfig?.text ||
+      filterConfig?.hashtags
     ) {
       let checkDateCreatingTweet;
       const startDatePoint = Date.parse(filterConfig?.dateFrom);
@@ -453,15 +453,19 @@ class TweetCollection {
       }
 
       if (filterConfig?.author) {
-        const authorTweets = filterTweets.filter((obj) => obj.author.toUpperCase().includes(filterConfig.author.toUpperCase()));
+        const authorTweets = filterTweets.filter((obj) =>
+          obj.author.toUpperCase().includes(filterConfig.author.toUpperCase())
+        );
         filterTweets = authorTweets;
         console.log(filterTweets);
       }
 
       if (filterConfig?.text) {
-        const textTweets = filterTweets.filter((obj) => obj.text
-          .toUpperCase()
-          .includes(filterConfig.text.trim().toUpperCase()));
+        const textTweets = filterTweets.filter((obj) =>
+          obj.text
+            .toUpperCase()
+            .includes(filterConfig.text.trim().toUpperCase())
+        );
         filterTweets = textTweets;
       }
 
@@ -483,7 +487,7 @@ class TweetCollection {
 
     if (!filterConfig?.author) {
       filterTweets.sort(
-        (a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt),
+        (a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt)
       );
       console.log(filterTweets);
       return filterTweets.slice(skip, skip + top);
@@ -500,6 +504,7 @@ class TweetCollection {
       this._tweets.push(newTweet);
       return true;
     }
+    return false;
   }
 
   edit(id, text) {
@@ -537,7 +542,7 @@ class TweetCollection {
       `comment-${Date.now()}`,
       new Date(),
       _user,
-      text,
+      text
     );
     if (Comment.validate(addCommentToTweet)) {
       this._tweets.map((obj) => {
@@ -574,10 +579,10 @@ const filterConfigObject = {
   hashtags: ['#spr', '#fan'],
   // text: ' ',
 };
-const twCol = new TweetCollection(tweets);
-console.log(twCol);
+// const twCol = new TweetCollection(tweets);
+// console.log(twCol);
 // console.log(twCol.getPage(filterConfigObject, 0, 10));
-console.log(twCol.addAll());
+// console.log(twCol.addAll());
 // console.log(twCol.getPage(filterConfigObject, 0, 10));
-console.log(twCol.addComment('t-17', 'TRex', 'King of dinosaurus'));
-console.log(twCol.remove('t-18', 'Neo'));
+// console.log(twCol.addComment('t-17', 'TRex', 'King of dinosaurus'));
+// console.log(twCol.remove('t-18', 'Neo'));

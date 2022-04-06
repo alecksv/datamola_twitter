@@ -273,7 +273,7 @@ export const tweets = [
   },
   {
     id: 't-20',
-    text: 'Yeahhhh #coffee !',
+    text: 'SuperPupper #coffee !',
     createdAt: new Date('2022-03-10T12:06:20'),
     author: 'Alex',
     comments: [
@@ -285,9 +285,15 @@ export const tweets = [
       },
       {
         id: 't-20 c-2',
-        text: 'I’m with you! Coffeman let’s go!!!',
-        createdAt: new Date('2022-03-10T12:06:25'),
-        author: 'Boss',
+        text: 'Come on my dear Coffemans let’s go!!!',
+        createdAt: new Date('2022-03-10T12:07:25'),
+        author: 'Mister-X',
+      },
+      {
+        id: 't-20 c-3',
+        text: 'Third comment!',
+        createdAt: new Date('2022-03-10T12:08:25'),
+        author: 'Mister-Y',
       },
     ],
   },
@@ -409,8 +415,9 @@ export class TweetCollection {
   constructor(tweets = []) {
     this._tweets = tweets;
   }
+  // changeUser(usr: string): void - изменить текущего пользователя на usr.
 
-  getPage(filterConfig, skip = 0, top = 10) {
+  getPage(skip = -10, top, filterConfig = {}) {
     let filterTweets = this._tweets;
 
     if (
@@ -482,7 +489,7 @@ export class TweetCollection {
         filterTweets = hashtagTweets;
       }
 
-      return filterTweets.slice(skip, skip + top);
+      return filterTweets.slice(skip, top);
     }
 
     if (!filterConfig?.author) {
@@ -490,7 +497,7 @@ export class TweetCollection {
         (a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt)
       );
       console.log(filterTweets);
-      return filterTweets.slice(skip, skip + top);
+      return filterTweets.slice(skip, top);
     }
   }
 
@@ -498,10 +505,19 @@ export class TweetCollection {
     return this._tweets.find((obj) => obj.id === id);
   }
 
-  add(text, _user) {
-    const newTweet = new Tweet(`t-${Date.now()}`, new Date(), text, _user, {});
+  add(text, user) {
+    let newDate = new Date();
+
+    const newTweet = new Tweet(
+      `tweet-${Date.now()}`,
+      new Date(),
+      text,
+      user,
+      {}
+    );
     if (Tweet.validate(newTweet)) {
       this._tweets.push(newTweet);
+
       return true;
     }
     return false;
@@ -570,6 +586,9 @@ export class TweetCollection {
 
   clear() {
     this._tweets = [];
+  }
+  changeUser(usr) {
+    return (this._user = usr);
   }
 }
 const filterConfigObject = {

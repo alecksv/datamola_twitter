@@ -306,7 +306,7 @@ const tweets = [
 ];
 
 const module = (function (arr) {
-  const user = 'Alex';
+  let user = 'Alex';
   const skip = 0;
   const top = 10;
   const filterConfigObject = {
@@ -321,11 +321,11 @@ const module = (function (arr) {
     let filterTweets = arr.concat();
 
     if (
-      filterConfig?.dateFrom
-      || filterConfig?.dateTo
-      || filterConfig?.author
-      || filterConfig?.text
-      || filterConfig?.hashtags
+      filterConfig?.dateFrom ||
+      filterConfig?.dateTo ||
+      filterConfig?.author ||
+      filterConfig?.text ||
+      filterConfig?.hashtags
     ) {
       let checkDateCreatingTweet;
       const startDatePoint = Date.parse(filterConfig?.dateFrom);
@@ -360,15 +360,19 @@ const module = (function (arr) {
       }
 
       if (filterConfig?.author) {
-        const authorTweets = filterTweets.filter((obj) => obj.author.toUpperCase().includes(filterConfig.author.toUpperCase()));
+        const authorTweets = filterTweets.filter((obj) =>
+          obj.author.toUpperCase().includes(filterConfig.author.toUpperCase())
+        );
         filterTweets = authorTweets;
         console.log(filterTweets);
       }
 
       if (filterConfig?.text) {
-        const textTweets = filterTweets.filter((obj) => obj.text
-          .toUpperCase()
-          .includes(filterConfig.text.trim().toUpperCase()));
+        const textTweets = filterTweets.filter((obj) =>
+          obj.text
+            .toUpperCase()
+            .includes(filterConfig.text.trim().toUpperCase())
+        );
         filterTweets = textTweets;
       }
 
@@ -390,7 +394,7 @@ const module = (function (arr) {
 
     if (!filterConfig?.author) {
       filterTweets.sort(
-        (a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt),
+        (a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt)
       );
       console.log(filterTweets);
       return filterTweets.slice(skip, skip + top);
@@ -403,16 +407,16 @@ const module = (function (arr) {
     if (!tw) return false;
 
     return (
-      typeof tw.id === 'string'
-      && typeof tw.text === 'string'
-      && tw.createdAt instanceof Object
-      && typeof tw.author === 'string'
-      && tw.comments instanceof Array
-      && typeof tw.comments !== null
-      && typeof tw.createdAt !== null
-      && tw.author.length > 0
-      && tw.text.length < 280
-      && tw.text.length > 0
+      typeof tw.id === 'string' &&
+      typeof tw.text === 'string' &&
+      tw.createdAt instanceof Object &&
+      typeof tw.author === 'string' &&
+      tw.comments instanceof Array &&
+      typeof tw.comments !== null &&
+      typeof tw.createdAt !== null &&
+      tw.author.length > 0 &&
+      tw.text.length < 280 &&
+      tw.text.length > 0
     );
   };
 
@@ -463,14 +467,14 @@ const module = (function (arr) {
     if (!com) return false;
 
     return (
-      typeof com.id === 'string'
-      && typeof com.text === 'string'
-      && com.createdAt instanceof Object
-      && typeof com.author === 'string'
-      && typeof com.createdAt !== null
-      && com.author.length > 0
-      && com.text.length < 280
-      && com.text.length > 0
+      typeof com.id === 'string' &&
+      typeof com.text === 'string' &&
+      com.createdAt instanceof Object &&
+      typeof com.author === 'string' &&
+      typeof com.createdAt !== null &&
+      com.author.length > 0 &&
+      com.text.length < 280 &&
+      com.text.length > 0
     );
   };
 
@@ -494,6 +498,13 @@ const module = (function (arr) {
     return false;
   };
 
+  const changeUser = (usr) => {
+    return (user = usr);
+  };
+  console.log(user);
+  console.log(changeUser('Boss'));
+  console.log(user);
+
   return {
     getTweets,
     getTweet,
@@ -503,5 +514,6 @@ const module = (function (arr) {
     removeTweet,
     validateComment,
     addComment,
+    changeUser,
   };
-}(tweets));
+})(tweets);

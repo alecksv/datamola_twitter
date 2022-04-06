@@ -8,6 +8,45 @@ class HeaderView {
     const headerContainer = document.createElement('header');
     headerContainer.id = `${this.containerId}`;
     document.body.append(headerContainer);
+
+    const mainContainer = document.createElement('main');
+    mainContainer.classList.add('main');
+    headerContainer.after(mainContainer);
+
+    const tweetWrapper = `<div class="wrapper">
+        <div class="main-content">
+          <section class="message-content">
+            <div class="message-content__wrapper">
+            <article class="message-content__item" id = "first-container">
+                <form
+                  class="message-content__form"
+                  action="#"
+                  name="authorMessageForm"
+                >
+                  <label class="message-content__label" for="authorName"
+                    >${user}</label
+                  >
+                  <textarea
+                    required
+                    id="authorName"
+                    class="message-content__textarea"
+                    name="authorMessageText"
+                    placeholder="Let’s chat! Write you message..."
+                    maxlength="280"
+                  ></textarea>
+                  <div class="message-content__wrap-button">
+                    <button class="common-button" type="submit">
+                      Add message
+                    </button>
+                  </div>
+                </form>
+              </article>     
+
+            </div>
+          </section>
+        </div>
+    </div>`;
+
     let headerContent = `<div class="wrapper">
         <div class="header-content">
           <div class="header-content__logo">
@@ -31,6 +70,7 @@ class HeaderView {
         </div>
       </div>`;
     headerContainer.innerHTML = headerContent;
+    mainContainer.innerHTML = tweetWrapper;
   }
 }
 
@@ -39,9 +79,9 @@ class FooterView {
     this.containerId = containerId;
   }
 
-  display(creator, email) {
+  display() {
     const footerContainer = document.createElement('footer');
-    footerContainer.id = `${this.footerId}`;
+    footerContainer.id = `${this.containerId}`;
     document.body.append(footerContainer);
     let footerContent = ` <div class="wrapper">
         <div class="footer-content">
@@ -59,51 +99,30 @@ class TweetFeedView {
   constructor(containerId) {
     this.containerId = containerId;
   }
+  // массив твитов
+  display(user, collection) {
+    console.log(collection);
+    let tweetsInnerLine = document.getElementById('first-container');
 
-  display(text, user) {
-    const mainContainer = document.createElement('main');
-    mainContainer.id = `${this.containerId}`;
-    let header = document.querySelector('header');
-    header.after(mainContainer);
-    mainContainer.innerHTML = tweetWrapper;
+    for (let i = 0; i < collection.length; i++) {
+      let tweetRender = document.createElement('article');
+      tweetRender.classList.add('message-content__item');
+      tweetsInnerLine.after(tweetRender);
 
-    const tweetWrapper = `<div class="wrapper">
-        <div class="main-content">
-          <section class="message-content">
-            <div class="message-content__wrapper">
-            <article class="message-content__item">
-                <form
-                  class="message-content__form"
-                  action="#"
-                  name="authorMessageForm"
-                >
-                  <label class="message-content__label" for="authorName"
-                    >Alex</label
-                  >
-                  <textarea
-                    required
-                    id="authorName"
-                    class="message-content__textarea"
-                    name="authorMessageText"
-                    placeholder="Let’s chat! Write you message..."
-                    maxlength="280"
-                  ></textarea>
-                  <div class="message-content__wrap-button">
-                    <button class="common-button" type="submit">
-                      Add message
-                    </button>
-                  </div>
-                </form>
-              </article>
-              ${newTweetCollection.map((item) => {
-                `<article class="message-content__item">
+      let newDate = new Date();
+
+      tweetRender.innerHTML = `
                 <div class="message-content__inner">
-                  <h2 class="message-content__twitAuthor">${user}</h2>
-                  <p class="message-content__date">${new Date()}</p>
+                  <h2 class="message-content__twitAuthor">${
+                    collection[i].author
+                  }</h2>
+                  <p class="message-content__date">${collection[
+                    i
+                  ].createdAt.toLocaleString()}</p>
                 </div>
 
                 <p class="message-content__twit">
-                  ${text}                  
+                  ${collection[i].text}
                 </p>
 
                 <div class="message-content__reply">
@@ -121,22 +140,8 @@ class TweetFeedView {
                     <p class="message-content__replyCount">2</p>
                   </div>
                 </div>
-              </article>`;
-              })}
-
-
-                           
-            </div>
-          </section>
-        </div>
-    </div>`;
-
-    let messageContentItem = document.querySelector(
-      '.message-content__wrapper'
-    );
-    console.log(messageContentItem);
-
-    // messageContentItem.append(tweetContainer);
+              `;
+    }
   }
 }
 
@@ -225,35 +230,205 @@ class FilterView {
   }
 }
 
+class TweetView {
+  constructor(containerId) {
+    this.containerId = containerId;
+  }
+  display(tweet) {
+    const innerContainer = document.querySelector('main');
+    console.log(tweet);
+
+    const oneTweet = `
+      <div class="twit-wrapper">
+        <div class="twit-content">
+          <div class="twit-header">
+            <div class="twit-content__inner-wrapper">
+              <div class="twit-header__arrow">
+                <a href="#">
+                  <object type="image/svg+xml" data="../img/arrow_back.svg">
+                    arrow
+                  </object>
+                </a>
+              </div>
+              <h3><a href="#">Back home</a></h3>
+            </div>
+
+            <h2 class="twit-content__title">Comments</h2>
+          </div>
+          <div class="twit-message">
+            <article class="message-content__item">
+              <div class="message-content__inner">
+                <h2 class="message-content__twitAuthor">${tweet.author}</h2>
+                <p class="message-content__date">${tweet.createdAt.toLocaleString()}</p>
+              </div>
+
+              <p class="message-content__twit">
+                ${tweet.text}
+              </p>
+
+              <div class="message-content__reply">
+                <div class="message-content__wrap-reply">
+                  <div class="message-content__svg">
+                    <object
+                      type="image/svg+xml"
+                      data="../img/reply.svg"
+                      width="20"
+                      height="20"
+                    >
+                      reply
+                    </object>
+                  </div>
+                  <p class="message-content__replyCount">2</p>
+                </div>
+              </div>
+            </article>
+
+            
+
+            
+
+            <article class="message-content__item">
+              <form
+                class="message-content__form"
+                action="#"
+                name="authorMessageForm"
+              >
+                <label class="message-content__label" for="authorName"
+                  >${mainUser}</label
+                >
+                <textarea
+                  required
+                  id="authorName"
+                  class="message-content__textarea"
+                  name="authorMessageText"
+                  placeholder="Print your reply..."
+                  maxlength="280"
+                ></textarea>
+                <div class="message-content__wrap-button">
+                  <button class="common-button" type="submit">Reply</button>
+                </div>
+              </form>
+            </article>
+          </div>
+          <div class="twit-reply"></div>
+          <div class="twit-reply"></div>
+        </div>
+      </div>
+    `;
+    innerContainer.innerHTML = oneTweet;
+
+    for (let i = 0; i < tweet.comments.length; i++) {
+      let mainTweet = document.querySelector('.message-content__item');
+      console.log(mainTweet);
+      let commentWrap = document.createElement('article');
+      commentWrap.classList.add('message-content__item');
+      mainTweet.after(commentWrap);
+      let comment = `
+              <div class="message-content__inner">
+                <h2 class="message-content__twitAuthor">${
+                  tweet.comments[i].author
+                }</h2>
+                <p class="message-content__date">${tweet.comments[
+                  i
+                ].createdAt.toLocaleString()}</p>
+              </div>
+
+              <p class="message-content__twit">
+                ${tweet.comments[i].text}
+              </p>
+            `;
+      commentWrap.innerHTML = comment;
+    }
+  }
+}
+
 // ******** methods ************
 // *****************************
 
-function setCurrentUser(user) {
+const tweetsCollection = new TweetCollection(tweets);
+tweetsCollection.user = 'Alex23';
+let mainUser = tweetsCollection.user;
+
+const tweedFeedView = new TweetFeedView('tweetFeedView');
+
+window.getFeed = function (skip, top, filterConfig) {
+  const collection = tweetsCollection.getPage(skip, top, filterConfig);
+  const user = tweetsCollection.user;
+  tweedFeedView.display(user, collection);
+  console.log(collection);
+};
+
+window.setCurrentUser = (mainUser = '') => {
   const header = new HeaderView('header');
-  const footer = new FooterView('footer');
-  // const tweetTexArea = new TweetFeedView();
-  header.display(user);
-  footer.display();
+  header.display(mainUser);
+};
 
-  // const main = new TweetFeedView('main', user);
-}
+window.addTweet = (text) => {
+  tweetsCollection.add(text, mainUser);
 
-function addTweet(text) {
-  let newTweetCollection = new TweetCollection();
-  newTweetCollection.add(text, 'User');
-  console.log(newTweetCollection);
-  let newTweetFeedView = new TweetFeedView('1');
-  newTweetFeedView.tweetContainerRender();
+  let tweetsInnerLine = document.getElementById('first-container');
 
-  // TweetFeedView.display(text);
-}
+  let tweetRender = document.createElement('article');
+  tweetRender.classList.add('message-content__item');
+  tweetsInnerLine.after(tweetRender);
 
-setCurrentUser('Boss');
+  let newDate = new Date();
 
-addTweet('345Let’s have a break! Go out for #coffee!!!');
+  tweetRender.innerHTML = `
+                <div class="message-content__inner">
+                  <h2 class="message-content__twitAuthor">${mainUser}</h2>
+                  <p class="message-content__date">${newDate.toLocaleString()}</p>
+                </div>
 
-let tweetsBlock = new TweetFeedView('main-container');
-tweetsBlock.tweetContainerRender();
+                <p class="message-content__twit">
+                  ${text}
+                </p>
+
+                <div class="message-content__reply">
+                  <div class="message-content__wrap-reply">
+                    <div class="message-content__svg">
+                      <object
+                        type="image/svg+xml"
+                        data="../img/reply.svg"
+                        width="20"
+                        height="20"
+                      >
+                        reply
+                      </object>
+                    </div>
+                    <p class="message-content__replyCount">2</p>
+                  </div>
+                </div>
+              `;
+};
+
+window.editTweet = (id, text) => {
+  const tweetEdit = tweetsCollection.edit(id, text);
+  console.log(tweetEdit);
+  getFeed(-10);
+};
+
+window.removeTweet = (id) => {
+  const tweetRemove = tweetsCollection.remove(id, mainUser);
+  console.log(tweetRemove);
+  getFeed(-10);
+};
+
+window.showTweet = (id) => {
+  let tweet = tweetsCollection.get(id);
+  let tweetView = new TweetView(id);
+  console.log(tweet);
+
+  tweetView.display(tweet);
+};
+// *
+// **
+// ***
+// создаем header, footer, filterBlock - визуальное отображение (типа по дефолту)
+setCurrentUser(mainUser);
+
+const footer = new FooterView('footer');
+footer.display();
 
 let filterBlock = new FilterView('filter-content');
-filterBlock.display();
+filterBlock.display('filter-block');

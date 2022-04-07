@@ -417,7 +417,7 @@ export class TweetCollection {
   }
   // changeUser(usr: string): void - изменить текущего пользователя на usr.
 
-  getPage(skip = -10, top, filterConfig = {}) {
+  getPage(skip = 0, top = 10, filterConfig = {}) {
     let filterTweets = this._tweets;
 
     if (
@@ -489,7 +489,7 @@ export class TweetCollection {
         filterTweets = hashtagTweets;
       }
 
-      return filterTweets.slice(skip, top);
+      return filterTweets.slice(skip, skip + top);
     }
 
     if (!filterConfig?.author) {
@@ -598,10 +598,3 @@ const filterConfigObject = {
   hashtags: ['#spr', '#fan'],
   // text: ' ',
 };
-// const twCol = new TweetCollection(tweets);
-// console.log(twCol);
-// console.log(twCol.getPage(filterConfigObject, 0, 10));
-// console.log(twCol.addAll());
-// console.log(twCol.getPage(filterConfigObject, 0, 10));
-// console.log(twCol.addComment('t-17', 'TRex', 'King of dinosaurus'));
-// console.log(twCol.remove('t-18', 'Neo'));

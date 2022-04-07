@@ -1,6 +1,6 @@
 import { Comment, Tweet, TweetCollection, tweets } from './script_class.js';
 
-class HeaderView {
+export class HeaderView {
   constructor(containerId) {
     this.containerId = containerId;
   }
@@ -12,6 +12,10 @@ class HeaderView {
     const mainContainer = document.createElement('main');
     mainContainer.classList.add('main');
     headerContainer.after(mainContainer);
+
+    const wrapperButton = document.createElement('div');
+    wrapperButton.classList.add('wrapper__button');
+    wrapperButton.innerHTML = `<button class="common-button load-more">Load more</button>`;
 
     const tweetWrapper = `<div class="wrapper">
         <div class="main-content">
@@ -35,7 +39,7 @@ class HeaderView {
                     maxlength="280"
                   ></textarea>
                   <div class="message-content__wrap-button">
-                    <button class="common-button" type="submit">
+                    <button class="common-button add-message">
                       Add message
                     </button>
                   </div>
@@ -63,7 +67,7 @@ class HeaderView {
           </div>
           <div class="header-content__button">
             <span class="header-content__log-name">${user}</span>
-            <button class="common-button">${
+            <button id ="header-login-btn" class="common-button">${
               user ? 'Log out' : 'Log In'
             }</button>
           </div>
@@ -71,10 +75,12 @@ class HeaderView {
       </div>`;
     headerContainer.innerHTML = headerContent;
     mainContainer.innerHTML = tweetWrapper;
+    let mainContent = document.querySelector('.main-content');
+    mainContent.after(wrapperButton);
   }
 }
 
-class FooterView {
+export class FooterView {
   constructor(containerId) {
     this.containerId = containerId;
   }
@@ -95,7 +101,7 @@ class FooterView {
   }
 }
 
-class TweetFeedView {
+export class TweetFeedView {
   constructor(containerId) {
     this.containerId = containerId;
   }
@@ -145,7 +151,7 @@ class TweetFeedView {
   }
 }
 
-class FilterView {
+export class FilterView {
   constructor(containerId) {
     this.containerId = containerId;
   }
@@ -230,7 +236,7 @@ class FilterView {
   }
 }
 
-class TweetView {
+export class TweetView {
   constructor(containerId) {
     this.containerId = containerId;
   }
@@ -345,90 +351,90 @@ class TweetView {
 // ******** methods ************
 // *****************************
 
-const tweetsCollection = new TweetCollection(tweets);
-tweetsCollection.user = 'Alex23';
-let mainUser = tweetsCollection.user;
+// const tweetsCollection = new TweetCollection(tweets);
+// tweetsCollection.user = 'Alex23';
+// let mainUser = tweetsCollection.user;
 
-const tweedFeedView = new TweetFeedView('tweetFeedView');
+// const tweedFeedView = new TweetFeedView('tweetFeedView');
 
-window.getFeed = function (skip, top, filterConfig) {
-  const collection = tweetsCollection.getPage(skip, top, filterConfig);
-  const user = tweetsCollection.user;
-  tweedFeedView.display(user, collection);
-  console.log(collection);
-};
+// window.getFeed = function (skip, top, filterConfig) {
+//   const collection = tweetsCollection.getPage(skip, top, filterConfig);
+//   const user = tweetsCollection.user;
+//   tweedFeedView.display(user, collection);
+//   console.log(collection);
+// };
 
-window.setCurrentUser = (mainUser = '') => {
-  const header = new HeaderView('header');
-  header.display(mainUser);
-};
+// window.setCurrentUser = (mainUser = '') => {
+//   const header = new HeaderView('header');
+//   header.display(mainUser);
+// };
 
-window.addTweet = (text) => {
-  tweetsCollection.add(text, mainUser);
+// window.addTweet = (text) => {
+//   tweetsCollection.add(text, mainUser);
 
-  let tweetsInnerLine = document.getElementById('first-container');
+//   let tweetsInnerLine = document.getElementById('first-container');
 
-  let tweetRender = document.createElement('article');
-  tweetRender.classList.add('message-content__item');
-  tweetsInnerLine.after(tweetRender);
+//   let tweetRender = document.createElement('article');
+//   tweetRender.classList.add('message-content__item');
+//   tweetsInnerLine.after(tweetRender);
 
-  let newDate = new Date();
+//   let newDate = new Date();
 
-  tweetRender.innerHTML = `
-                <div class="message-content__inner">
-                  <h2 class="message-content__twitAuthor">${mainUser}</h2>
-                  <p class="message-content__date">${newDate.toLocaleString()}</p>
-                </div>
+//   tweetRender.innerHTML = `
+//                 <div class="message-content__inner">
+//                   <h2 class="message-content__twitAuthor">${mainUser}</h2>
+//                   <p class="message-content__date">${newDate.toLocaleString()}</p>
+//                 </div>
 
-                <p class="message-content__twit">
-                  ${text}
-                </p>
+//                 <p class="message-content__twit">
+//                   ${text}
+//                 </p>
 
-                <div class="message-content__reply">
-                  <div class="message-content__wrap-reply">
-                    <div class="message-content__svg">
-                      <object
-                        type="image/svg+xml"
-                        data="../img/reply.svg"
-                        width="20"
-                        height="20"
-                      >
-                        reply
-                      </object>
-                    </div>
-                    <p class="message-content__replyCount">2</p>
-                  </div>
-                </div>
-              `;
-};
+//                 <div class="message-content__reply">
+//                   <div class="message-content__wrap-reply">
+//                     <div class="message-content__svg">
+//                       <object
+//                         type="image/svg+xml"
+//                         data="../img/reply.svg"
+//                         width="20"
+//                         height="20"
+//                       >
+//                         reply
+//                       </object>
+//                     </div>
+//                     <p class="message-content__replyCount">2</p>
+//                   </div>
+//                 </div>
+//               `;
+// };
 
-window.editTweet = (id, text) => {
-  const tweetEdit = tweetsCollection.edit(id, text);
-  console.log(tweetEdit);
-  getFeed(-10);
-};
+// window.editTweet = (id, text) => {
+//   const tweetEdit = tweetsCollection.edit(id, text);
+//   console.log(tweetEdit);
+//   getFeed(-10);
+// };
 
-window.removeTweet = (id) => {
-  const tweetRemove = tweetsCollection.remove(id, mainUser);
-  console.log(tweetRemove);
-  getFeed(-10);
-};
+// window.removeTweet = (id) => {
+//   const tweetRemove = tweetsCollection.remove(id, mainUser);
+//   console.log(tweetRemove);
+//   getFeed(-10);
+// };
 
-window.showTweet = (id) => {
-  let tweet = tweetsCollection.get(id);
-  let tweetView = new TweetView(id);
-  console.log(tweet);
+// window.showTweet = (id) => {
+//   let tweet = tweetsCollection.get(id);
+//   let tweetView = new TweetView(id);
+//   console.log(tweet);
 
-  tweetView.display(tweet);
-};
+//   tweetView.display(tweet);
+// };
 // *
 // **
 // ***
 // создаем header, footer, filterBlock - визуальное отображение (типа по дефолту)
-setCurrentUser(mainUser);
+// setCurrentUser(mainUser);
 
-const footer = new FooterView('footer');
-footer.display();
+// const footer = new FooterView('footer');
+// footer.display();
 
-let filterBlock = new FilterView('filter-content');
-filterBlock.display('filter-block');
+// let filterBlock = new FilterView('filter-content');
+// filterBlock.display('filter-block');

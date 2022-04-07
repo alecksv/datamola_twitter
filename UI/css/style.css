@@ -1,14 +1,16 @@
-@import url("../css/sections-style/main/header.css");
-@import url("../css/sections-style/main/message.css");
-@import url("../css/sections-style/main/filter.css");
-@import url("../css/sections-style/main/footer.css");
-@import url("../css/sections-style/twit/twit.css");
+@import url('../css/sections-style/main/header.css');
+@import url('../css/sections-style/main/message.css');
+@import url('../css/sections-style/main/filter.css');
+@import url('../css/sections-style/main/footer.css');
+@import url('../css/sections-style/twit/twit.css');
+@import url('../css/sections-style/login/login.css');
+@import url('../css/sections-style/login/signup.css');
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
 }
 
@@ -32,7 +34,9 @@
   --24: 1.5rem;
   --35: 2.1875rem;
   --50: 3.125rem;
+  --80: 5rem;
   --140: 8.75rem;
+  --370: 23.125rem;
 }
 
 a {

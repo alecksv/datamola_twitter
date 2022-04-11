@@ -77,3 +77,23 @@ h2 {
 .hashtag {
   color: var(--hashtag);
 }
+/* дополнительный классы */
+.hiddenBtn {
+  visibility: hidden;
+}
+.disableColor {
+  background-color: var(--grey-blur);
+}
+.disableColor:hover {
+  background-color: var(--grey-blur);
+}
+.common-button.disableColor:hover {
+  box-shadow: none;
+}
+
+.message-content__reply-buttons {
+  visibility: hidden;
+}
+.show-btns {
+  visibility: visible;
+}

@@ -1,49 +1,216 @@
 export const tweets = [
   {
-    id: 't-1',
-    text: 'Let’s have a break! Go out for #coffee !',
-    createdAt: new Date('2022-03-09T09:01:01'),
-    author: 'Anna',
+    id: 't-20',
+    text: 'SuperPupper #coffee !',
+    createdAt: new Date('2022-03-10T12:06:20'),
+    author: 'Alex',
     comments: [
       {
-        id: 't-1 c-1',
+        id: 't-20 c-1',
         text: 'I’m with you! Coffeman let’s go!!!',
-        createdAt: new Date('2022-03-09T09:01:05'),
+        createdAt: new Date('2022-03-10T12:06:25'),
         author: 'Boss',
       },
       {
-        id: 't-1 c-2',
-        text: 'Please, bring me latte and cookies. Deadline and Smith are killing me!!!',
-        createdAt: new Date('2022-03-09T209:01:06'),
-        author: 'Neo',
+        id: 't-20 c-2',
+        text: 'Come on my dear Coffemans let’s go!!!',
+        createdAt: new Date('2022-03-10T12:07:25'),
+        author: 'Mister-X',
+      },
+      {
+        id: 't-20 c-3',
+        text: 'Third comment!',
+        createdAt: new Date('2022-03-10T12:08:25'),
+        author: 'Mister-Y',
+      },
+    ],
+  },
+  {
+    id: 't-19',
+    text: 'coffee Go out for #tea #coffee !',
+    createdAt: new Date('2022-03-10T12:05:01'),
+    author: 'Boss',
+    comments: [],
+  },
+  {
+    id: 't-18',
+    text: ' Go out for #coffee !',
+    createdAt: new Date('2022-03-10T12:04:01'),
+    author: 'Neo',
+    comments: [
+      {
+        id: 't-18 c-1',
+        text: 'I’m with you! Coffeman let’s go!!!',
+        createdAt: new Date('2022-03-10T12:04:05'),
+        author: 'Boss',
+      },
+    ],
+  },
+  {
+    id: 't-17',
+    text: ' Go out for #coffee #fanta #sprite !',
+    createdAt: new Date('2022-03-10T12:03:01'),
+    author: 'Boss',
+    comments: [
+      {
+        id: 't-17 c-1',
+        text: 'I’m with you! Coffeman let’s go!!!',
+        createdAt: new Date('2022-03-10T12:03:05'),
+        author: 'Boss',
+      },
+    ],
+  },
+  {
+    id: 't-16',
+    text: ' Go out for #tea !',
+    createdAt: new Date('2022-03-10T12:02:15'),
+    author: 'Anna',
+    comments: [
+      {
+        id: 't-16 c-1',
+        text: 'I’m with you! Coffeman let’s go!!!',
+        createdAt: new Date('2022-03-10T12:02:25'),
+        author: 'Boss',
+      },
+    ],
+  },
+  {
+    id: 't-15',
+    text: ' Go out for #sprite !',
+    createdAt: new Date('2022-03-10T12:01:10'),
+    author: 'Neo',
+    comments: [
+      {
+        id: 't-15 c-1',
+        text: 'I’m with you! Coffeman let’s go!!!',
+        createdAt: new Date('2022-03-10T12:01:15'),
+        author: 'Boss',
+      },
+    ],
+  },
+  {
+    id: 't-14',
+    text: ' Go out for #coffee !',
+    createdAt: new Date('2022-03-10T12:00:20'),
+    author: 'Anna',
+    comments: [
+      {
+        id: 't-14 c-1',
+        text: 'I’m with you! Coffeman let’s go!!!',
+        createdAt: new Date('2022-03-10T12:00:56'),
+        author: 'Boss',
+      },
+    ],
+  },
+  {
+    id: 't-13',
+    text: ' Go out for #fanta !',
+    createdAt: new Date('2022-03-10T12:00:19'),
+    author: 'Bob',
+    comments: [
+      {
+        id: 't-13 c-1',
+        text: 'I’m with you! Coffeman let’s go!!!',
+        createdAt: new Date('2022-03-10T12:00:55'),
+        author: 'Boss',
+      },
+    ],
+  },
+  {
+    id: 't-12',
+    text: ' Go out for #fanta !',
+    createdAt: new Date('2022-03-10T12:00:16'),
+    author: 'Alex',
+    comments: [
+      {
+        id: 't-12 c-1',
+        text: 'I’m with you! Coffeman let’s go!!!',
+        createdAt: new Date('2022-03-10T12:00:48'),
+        author: 'Boss',
+      },
+    ],
+  },
+  {
+    id: 't-11',
+    text: ' Go out for #coffee !',
+    createdAt: new Date('2022-03-10T12:00:15'),
+    author: 'Alex',
+    comments: [
+      {
+        id: 't-11 c-1',
+        text: 'I’m with you! Coffeman let’s go!!!',
+        createdAt: new Date('2022-03-10T12:00:47'),
+        author: 'Boss',
+      },
+    ],
+  },
+  {
+    id: 't-10',
+    text: ' Go out for #sprite !',
+    createdAt: new Date('2022-03-10T12:00:14'),
+    author: 'Alex',
+    comments: [
+      {
+        id: 't-10 c-1',
+        text: 'I’m with you! Coffeman let’s go!!!',
+        createdAt: new Date('2022-03-10T12:00:46'),
+        author: 'Boss',
+      },
+    ],
+  },
+  {
+    id: 't-9',
+    text: ' Go out for #coffee !',
+    createdAt: new Date('2022-03-10T12:00:13'),
+    author: 'Bob',
+    comments: [
+      {
+        id: 't-9 c-1',
+        text: 'I’m with you! Coffeman let’s go!!!',
+        createdAt: new Date('2022-03-10T12:00:45'),
+        author: 'Boss',
+      },
+    ],
+  },
+  {
+    id: 't-8',
+    text: ' Go out for #coke !',
+    createdAt: new Date('2022-03-10T12:00:12'),
+    author: 'Alex',
+    comments: [
+      {
+        id: 't-8 c-1',
+        text: 'I’m with you! Coffeman let’s go!!!',
+        createdAt: new Date('2022-03-10T12:00:35'),
+        author: 'Boss',
+      },
+    ],
+  },
+  {
+    id: 't-7',
+    text: ' Go out for #coffee !',
+    createdAt: new Date('2022-03-10T12:00:11'),
+    author: 'Alex',
+    comments: [
+      {
+        id: 't-7 c-1',
+        text: 'I’m with you! Coffeman let’s go!!!',
+        createdAt: new Date('2022-03-10T12:00:25'),
+        author: 'Boss',
       },
     ],
   },
 
   {
-    id: 't-3',
+    id: 't-6',
     text: ' Go out for #coffee !',
-    createdAt: new Date('2022-03-10T10:00:01'),
-    author: 'Tom',
+    createdAt: new Date('2022-03-10T12:00:10'),
+    author: 'Boss',
     comments: [
       {
-        id: 't-3 c-1',
+        id: 't-6 c-1',
         text: 'I’m with you! Coffeman let’s go!!!',
-        createdAt: new Date('2022-03-10T10:00:05'),
-        author: 'Boss',
-      },
-    ],
-  },
-  {
-    id: 't-4',
-    text: ' Go out for #coffee !',
-    createdAt: new Date('2022-03-10T11:00:01'),
-    author: 'Alex',
-    comments: [
-      {
-        id: 't-4 c-1',
-        text: 'I’m with you! Coffeman let’s go!!!',
-        createdAt: new Date('2022-03-10T11:00:05'),
+        createdAt: new Date('2022-03-10T12:00:15'),
         author: 'Boss',
       },
     ],
@@ -63,15 +230,29 @@ export const tweets = [
     ],
   },
   {
-    id: 't-6',
+    id: 't-4',
     text: ' Go out for #coffee !',
-    createdAt: new Date('2022-03-10T12:00:10'),
-    author: 'Boss',
+    createdAt: new Date('2022-03-10T11:00:01'),
+    author: 'Alex',
     comments: [
       {
-        id: 't-6 c-1',
+        id: 't-4 c-1',
         text: 'I’m with you! Coffeman let’s go!!!',
-        createdAt: new Date('2022-03-10T12:00:15'),
+        createdAt: new Date('2022-03-10T11:00:05'),
+        author: 'Boss',
+      },
+    ],
+  },
+  {
+    id: 't-3',
+    text: ' Go out for #coffee !',
+    createdAt: new Date('2022-03-10T10:00:01'),
+    author: 'Tom',
+    comments: [
+      {
+        id: 't-3 c-1',
+        text: 'I’m with you! Coffeman let’s go!!!',
+        createdAt: new Date('2022-03-10T10:00:05'),
         author: 'Boss',
       },
     ],
@@ -96,204 +277,24 @@ export const tweets = [
       },
     ],
   },
+
   {
-    id: 't-7',
-    text: ' Go out for #coffee !',
-    createdAt: new Date('2022-03-10T12:00:11'),
-    author: 'Alex',
-    comments: [
-      {
-        id: 't-7 c-1',
-        text: 'I’m with you! Coffeman let’s go!!!',
-        createdAt: new Date('2022-03-10T12:00:25'),
-        author: 'Boss',
-      },
-    ],
-  },
-  {
-    id: 't-8',
-    text: ' Go out for #coke !',
-    createdAt: new Date('2022-03-10T12:00:12'),
-    author: 'Alex',
-    comments: [
-      {
-        id: 't-8 c-1',
-        text: 'I’m with you! Coffeman let’s go!!!',
-        createdAt: new Date('2022-03-10T12:00:35'),
-        author: 'Boss',
-      },
-    ],
-  },
-  {
-    id: 't-9',
-    text: ' Go out for #coffee !',
-    createdAt: new Date('2022-03-10T12:00:13'),
-    author: 'Bob',
-    comments: [
-      {
-        id: 't-9 c-1',
-        text: 'I’m with you! Coffeman let’s go!!!',
-        createdAt: new Date('2022-03-10T12:00:45'),
-        author: 'Boss',
-      },
-    ],
-  },
-  {
-    id: 't-10',
-    text: ' Go out for #sprite !',
-    createdAt: new Date('2022-03-10T12:00:14'),
-    author: 'Alex',
-    comments: [
-      {
-        id: 't-10 c-1',
-        text: 'I’m with you! Coffeman let’s go!!!',
-        createdAt: new Date('2022-03-10T12:00:46'),
-        author: 'Boss',
-      },
-    ],
-  },
-  {
-    id: 't-11',
-    text: ' Go out for #coffee !',
-    createdAt: new Date('2022-03-10T12:00:15'),
-    author: 'Alex',
-    comments: [
-      {
-        id: 't-11 c-1',
-        text: 'I’m with you! Coffeman let’s go!!!',
-        createdAt: new Date('2022-03-10T12:00:47'),
-        author: 'Boss',
-      },
-    ],
-  },
-  {
-    id: 't-12',
-    text: ' Go out for #fanta !',
-    createdAt: new Date('2022-03-10T12:00:16'),
-    author: 'Alex',
-    comments: [
-      {
-        id: 't-12 c-1',
-        text: 'I’m with you! Coffeman let’s go!!!',
-        createdAt: new Date('2022-03-10T12:00:48'),
-        author: 'Boss',
-      },
-    ],
-  },
-  {
-    id: 't-13',
-    text: ' Go out for #fanta !',
-    createdAt: new Date('2022-03-10T12:00:19'),
-    author: 'Bob',
-    comments: [
-      {
-        id: 't-13 c-1',
-        text: 'I’m with you! Coffeman let’s go!!!',
-        createdAt: new Date('2022-03-10T12:00:55'),
-        author: 'Boss',
-      },
-    ],
-  },
-  {
-    id: 't-14',
-    text: ' Go out for #coffee !',
-    createdAt: new Date('2022-03-10T12:00:20'),
+    id: 't-1',
+    text: 'Let’s have a break! Go out for #coffee !',
+    createdAt: new Date('2022-03-09T09:01:01'),
     author: 'Anna',
     comments: [
       {
-        id: 't-14 c-1',
+        id: 't-1 c-1',
         text: 'I’m with you! Coffeman let’s go!!!',
-        createdAt: new Date('2022-03-10T12:00:56'),
-        author: 'Boss',
-      },
-    ],
-  },
-  {
-    id: 't-15',
-    text: ' Go out for #sprite !',
-    createdAt: new Date('2022-03-10T12:01:10'),
-    author: 'Neo',
-    comments: [
-      {
-        id: 't-15 c-1',
-        text: 'I’m with you! Coffeman let’s go!!!',
-        createdAt: new Date('2022-03-10T12:01:15'),
-        author: 'Boss',
-      },
-    ],
-  },
-  {
-    id: 't-16',
-    text: ' Go out for #tea !',
-    createdAt: new Date('2022-03-10T12:02:15'),
-    author: 'Anna',
-    comments: [
-      {
-        id: 't-16 c-1',
-        text: 'I’m with you! Coffeman let’s go!!!',
-        createdAt: new Date('2022-03-10T12:02:25'),
-        author: 'Boss',
-      },
-    ],
-  },
-  {
-    id: 't-17',
-    text: ' Go out for #coffee #fanta #sprite !',
-    createdAt: new Date('2022-03-10T12:03:01'),
-    author: 'Boss',
-    comments: [
-      {
-        id: 't-17 c-1',
-        text: 'I’m with you! Coffeman let’s go!!!',
-        createdAt: new Date('2022-03-10T12:03:05'),
-        author: 'Boss',
-      },
-    ],
-  },
-  {
-    id: 't-18',
-    text: ' Go out for #coffee !',
-    createdAt: new Date('2022-03-10T12:04:01'),
-    author: 'Neo',
-    comments: [
-      {
-        id: 't-18 c-1',
-        text: 'I’m with you! Coffeman let’s go!!!',
-        createdAt: new Date('2022-03-10T12:04:05'),
-        author: 'Boss',
-      },
-    ],
-  },
-  {
-    id: 't-19',
-    text: 'coffee Go out for #tea #coffee !',
-    createdAt: new Date('2022-03-10T12:05:01'),
-    author: 'Boss',
-    comments: [],
-  },
-  {
-    id: 't-20',
-    text: 'SuperPupper #coffee !',
-    createdAt: new Date('2022-03-10T12:06:20'),
-    author: 'Alex',
-    comments: [
-      {
-        id: 't-20 c-1',
-        text: 'I’m with you! Coffeman let’s go!!!',
-        createdAt: new Date('2022-03-10T12:06:25'),
+        createdAt: new Date('2022-03-09T09:01:05'),
         author: 'Boss',
       },
       {
-        id: 't-20 c-2',
-        text: 'Come on my dear Coffemans let’s go!!!',
-        createdAt: new Date('2022-03-10T12:07:25'),
-        author: 'Mister-X',
-      },
-      {
-        id: 't-20 c-3',
-        text: 'Third comment!',
-        createdAt: new Date('2022-03-10T12:08:25'),
-        author: 'Mister-Y',
+        id: 't-1 c-2',
+        text: 'Please, bring me latte and cookies. Deadline and Smith are killing me!!!',
+        createdAt: new Date('2022-03-09T209:01:06'),
+        author: 'Neo',
       },
     ],
   },
@@ -346,13 +347,6 @@ export class Tweet {
   }
 }
 
-const oneMoreTweet = new Tweet(
-  `tweet-${Date.now()}`,
-  new Date(),
-  'hi!',
-  'Alex'
-);
-
 // ********************************* comment *****************************
 // *************************************************************************
 
@@ -398,20 +392,11 @@ export class Comment {
   }
 }
 
-const oneMoreComment = new Comment(
-  `comment-${Date.now()}`,
-  new Date(),
-  'Matrix! Morphius!',
-  'Neo'
-);
-console.log(oneMoreComment);
-console.log(Comment.validate(tweets[19].comments[1]));
-console.log(tweets[18].comments);
-
 // ********************************************* TweetCollection************
 // *************************************************************************
 
 export class TweetCollection {
+  user = null;
   constructor(tweets = []) {
     this._tweets = tweets;
   }
@@ -488,16 +473,17 @@ export class TweetCollection {
 
         filterTweets = hashtagTweets;
       }
+      console.log(filterTweets);
 
       return filterTweets.slice(skip, skip + top);
     }
 
     if (!filterConfig?.author) {
       filterTweets.sort(
-        (a, b) => Date.parse(a.createdAt) - Date.parse(b.createdAt)
+        (b, a) => Date.parse(a.createdAt) - Date.parse(b.createdAt)
       );
       console.log(filterTweets);
-      return filterTweets.slice(skip, top);
+      return filterTweets.slice(skip, skip + top);
     }
   }
 
@@ -505,18 +491,19 @@ export class TweetCollection {
     return this._tweets.find((obj) => obj.id === id);
   }
 
-  add(text, user) {
+  add(text) {
     let newDate = new Date();
 
     const newTweet = new Tweet(
       `tweet-${Date.now()}`,
       new Date(),
       text,
-      user,
+      this.user,
       {}
     );
     if (Tweet.validate(newTweet)) {
       this._tweets.push(newTweet);
+      console.log(this._tweets);
 
       return true;
     }
@@ -537,10 +524,10 @@ export class TweetCollection {
     return !!(Tweet.validate(idTextTweet[0]) && idTextTweet[0].text.length);
   }
 
-  remove(id, _user) {
+  remove(id) {
     let item;
     const removeTweetItem = this._tweets.filter((obj, i) => {
-      if (obj.id === id && obj.author === _user) {
+      if (obj.id === id && obj.author === this.user) {
         item = i;
         return obj;
       }
@@ -553,11 +540,11 @@ export class TweetCollection {
     return false;
   }
 
-  addComment(id, _user, text) {
+  addComment(id, text) {
     const addCommentToTweet = new Comment(
       `comment-${Date.now()}`,
       new Date(),
-      _user,
+      this.user,
       text
     );
     if (Comment.validate(addCommentToTweet)) {
@@ -588,13 +575,13 @@ export class TweetCollection {
     this._tweets = [];
   }
   changeUser(usr) {
-    return (this._user = usr);
+    return (this.user = usr);
   }
 }
 const filterConfigObject = {
   // author: 'alex',
   // dateFrom: new Date('2022-03-10T12:00:05'),
   // dateTo: new Date('2022-03-10T12:00:15'),
-  hashtags: ['#spr', '#fan'],
+  // hashtags: ['#spr', '#fan'],
   // text: ' ',
 };

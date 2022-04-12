@@ -97,3 +97,6 @@ h2 {
 .show-btns {
   visibility: visible;
 }
+.unvisible-block {
+  visibility: hidden;
+}

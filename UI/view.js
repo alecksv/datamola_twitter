@@ -311,9 +311,8 @@ export class TweetView {
   constructor(containerId) {
     this.containerId = containerId;
   }
-  display(user, tweet) {
+  display(user, tweet, id) {
     const innerContainer = document.querySelector('main');
-    console.log(tweet);
 
     const oneTweet = `
       <div class="twit-wrapper">
@@ -366,7 +365,7 @@ export class TweetView {
 
             
 
-            <article class="message-content__item">
+            <article id="change-visible" class="message-content__item unvisible-block">
               <form
                 class="message-content__form"
                 action="#"
@@ -377,14 +376,14 @@ export class TweetView {
                 >
                 <textarea
                   required
-                  id="authorName"
+                  data-id=${id}
                   class="message-content__textarea"
                   name="authorMessageText"
                   placeholder="Print your reply..."
                   maxlength="280"
                 ></textarea>
                 <div class="message-content__wrap-button">
-                  <button class="common-button" type="submit">Reply</button>
+                  <button  class="common-button reply-btn" type="submit">Reply</button>
                 </div>
               </form>
             </article>
@@ -398,7 +397,6 @@ export class TweetView {
 
     for (let i = 0; i < tweet.comments.length; i++) {
       let mainTweet = document.querySelector('.message-content__item');
-      console.log(mainTweet);
       let commentWrap = document.createElement('article');
       commentWrap.classList.add('message-content__item');
 

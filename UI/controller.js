@@ -79,7 +79,12 @@ class TweetsController {
     let tweetView = new TweetView(id);
     console.log(tweet);
 
-    tweetView.display(tweetsCollection.user, tweet);
+    tweetView.display(tweetsCollection.user, tweet, id);
+    const unvisible = document.getElementById('change-visible');
+
+    if (tweetsCollection.user) {
+      unvisible.classList.remove('unvisible-block');
+    }
   };
 
   logIn = () => {
@@ -121,7 +126,7 @@ document.addEventListener('click', (e) => {
       const users = localStorage['users']
         ? JSON.parse(localStorage['users'])
         : [];
-      // const users = JSON.parse(localStorage.getItem('users'));
+
       for (let i = 0; i < users.length; i++) {
         if (users[i]['userName'] === nameSignup.value) {
           alert(`User Name ${nameSignup.value} exist!`);
@@ -131,18 +136,37 @@ document.addEventListener('click', (e) => {
     }
 
     if (passwordSignup.value === passwordConfirmSignup.value) {
-      const userData = {
-        userName: nameSignup.value,
-        password: passwordSignup.value,
-        passwordConfirm: passwordConfirmSignup.value,
+      var myHeaders = new Headers();
+      myHeaders.append('Content-Type', 'application/json');
+
+      var raw = JSON.stringify({
+        login: nameSignup.value,
+        password: passwordConfirmSignup.value,
+      });
+
+      var options = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
       };
 
-      const users = localStorage['users']
-        ? JSON.parse(localStorage['users'])
-        : [];
-      users.push(userData);
+      fetch('https://jslabapi.datamola.com/registration', options)
+        .then((response) => response.text())
+        .then((result) => console.log(result))
+        .catch((error) => console.log('error', error));
 
-      localStorage['users'] = JSON.stringify(users);
+      // const userData = {
+      //   userName: nameSignup.value,
+      //   password: passwordSignup.value,
+      //   passwordConfirm: passwordConfirmSignup.value,
+      // };
+
+      // const users = localStorage['users']
+      //   ? JSON.parse(localStorage['users'])
+      //   : [];
+      // users.push(userData);
+
+      // localStorage['users'] = JSON.stringify(users);
     }
     // }
     // }
@@ -223,7 +247,19 @@ document.addEventListener('click', (e) => {
     console.log(text);
     tweetsController.addTweet(text);
     console.log(tweetsCollection);
-    // localStorage['tweets'] = JSON.stringify(tweetsCollection);
+  }
+});
+//
+// ************************** КНОПКА ОТВЕТИТЬ НА ТВИТ *****************
+//
+document.addEventListener('click', (e) => {
+  if (e.target && e.target.className == 'common-button reply-btn') {
+    let aim = e.target.closest('.message-content__item');
+    let reply = aim.querySelector('.message-content__textarea');
+    let id = reply.dataset.id;
+    tweetsCollection.addComment(id, reply.value);
+    console.log(tweetsCollection);
+    tweetsController.showTweet(id);
   }
 });
 
@@ -236,9 +272,6 @@ tweetsDom.addEventListener('click', (e) => {
     let aim = e.target.closest('.message-content__item');
     let b = aim.querySelector('.message-content__inner');
     if (!b || !b.dataset.id) return;
-    console.log(b);
-    console.log(e.target);
-
     tweetsController.showTweet(b.dataset.id);
   }
 });
@@ -261,14 +294,12 @@ document.addEventListener('click', (e) => {
     let aim = e.target.closest('.message-content__item');
     let b = aim.querySelector('.message-content__inner');
     if (!b || !b.dataset.id) return;
-    console.log(b);
-    console.log(e.target);
-
     tweetsController.removeTweet(b.dataset.id);
   }
 });
 //
-// ****************** вешаем клик на кнопку РЕДАКТИРОВАТЬ твит ****************
+// ****************** вешаем клик на кнопку РЕДАКТИРОВАТЬ твит ******   ВОПРОС КАК РЕАЛИЗОВАТЬ?????????????????
+//?????????????????????????????????????????????????????????????????????????????????????
 //
 document.addEventListener('click', (e) => {
   if (e.target && e.target.className == 'common-button edit-btn') {

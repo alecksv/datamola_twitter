@@ -473,7 +473,6 @@ export class TweetCollection {
 
         filterTweets = hashtagTweets;
       }
-      console.log(filterTweets);
 
       return filterTweets.slice(skip, skip + top);
     }
@@ -482,7 +481,7 @@ export class TweetCollection {
       filterTweets.sort(
         (b, a) => Date.parse(a.createdAt) - Date.parse(b.createdAt)
       );
-      console.log(filterTweets);
+
       return filterTweets.slice(skip, skip + top);
     }
   }
@@ -544,8 +543,8 @@ export class TweetCollection {
     const addCommentToTweet = new Comment(
       `comment-${Date.now()}`,
       new Date(),
-      this.user,
-      text
+      text,
+      this.user
     );
     if (Comment.validate(addCommentToTweet)) {
       this._tweets.map((obj) => {

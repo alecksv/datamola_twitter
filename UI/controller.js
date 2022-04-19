@@ -8,20 +8,7 @@ import {
   Login,
   Signup,
 } from './view.js';
-
-// const tweetsData = {
-//   userName: nameSignup.value,
-//   password: passwordSignup.value,
-//   passwordConfirm: passwordConfirmSignup.value,
-// };
-
-// const tweetsStorage = localStorage['tweets']
-//   ? JSON.parse(localStorage['tweets'])
-//   : [];
-// tweetsStorage.push(tweets);
-// console.log(tweetsStorage);
-
-// localStorage['tweets'] = JSON.stringify(tweets);
+import { TweetFeedApiService } from './api.js';
 
 const header = new HeaderView('header');
 const footer = new FooterView('footer');
@@ -33,17 +20,53 @@ const tweetsCollection = new TweetCollection(tweets);
 const tweetFeedView = new TweetFeedView('main');
 tweetsCollection.user = '';
 
+const tweetFeedApiService = new TweetFeedApiService(
+  'https://jslabapi.datamola.com/'
+);
+
 class TweetsController {
   constructor() {}
   setCurrentUser = (user) => {
     header.display(user);
-    this.getFeed();
     footer.display();
+
+    this.getFeed();
   };
 
   getFeed = function (skip, top, filterConfig) {
-    const collection = tweetsCollection.getPage(skip, top, filterConfig);
+    // const collection = tweetsCollection.getPage(skip, top, filterConfig);
+
+    async function getCollection() {
+      let response = await tweetFeedApiService.apiCollectionTweets();
+      console.log(response);
+      let collection = await response.json();
+      console.log(collection);
+      return collection;
+    }
+    const collection = getCollection();
+    console.log(collection);
     tweetFeedView.display(tweetsCollection.user, collection);
+
+    //
+    // перескакивает после 39 строки на 62 а только потом на 45??????????????????
+    //
+
+    if (!filterConfig) {
+      filterConfig = {
+        author: '',
+        dateFrom: new Date('2000-01-01'),
+        dateTo: new Date('2100-01-01'),
+        hashtags: [],
+        text: '',
+      };
+    }
+    filter.display(filterConfig);
+
+    if (collection.length < 10) {
+      let loadMoreBtn = document.getElementById('load-more');
+      loadMoreBtn.classList.add('hiddenBtn');
+    }
+
     console.log(collection);
     const authorText = document.getElementById('authorText');
     const btnAddMessage = document.getElementById('add-message');
@@ -107,15 +130,56 @@ class TweetsController {
 //
 let tweetsController = new TweetsController();
 tweetsController.setCurrentUser(tweetsCollection.user);
+//
+// ********* ФИЛЬТРАЦИЯ ***********
+//
+document.addEventListener('click', (e) => {
+  if (e.target && e.target.id === 'apply-btn') {
+    e.preventDefault();
+
+    const searchName = document.getElementById('searchName').value;
+    let searchDate = document.getElementById('searchDate').value;
+    let searchDateTo = document.getElementById('searchDateTo').value;
+    let searchText = document.getElementById('searchText').value;
+    let searchHashTag = document.getElementById('searchHashTag').value;
+    console.log(searchHashTag);
+    let arr = searchHashTag.split(',');
+    console.log(arr);
+
+    if (!searchDateTo) {
+      searchDateTo = '2100-01-01';
+    }
+
+    if (!searchDate) {
+      searchDate = '2000-01-01';
+    }
+
+    const filterConfig = {
+      author: searchName,
+      dateFrom: new Date(searchDate),
+      dateTo: new Date(searchDateTo),
+      hashtags: arr,
+      text: searchText,
+    };
+
+    let top = 10;
+    tweetsController.getFeed(0, top, filterConfig);
+    top += 10;
+  }
+});
 
 //
 // ****************** РЕГИСТРАЦИЯ USER **********************
 //
 document.addEventListener('click', (e) => {
+  e.preventDefault();
   if (
     e.target &&
-    e.target.className == 'common-button filter-button apply-filters'
+    e.target.className ==
+      'common-button filter-button apply-filters confirm-btn'
   ) {
+    //
+    //
     const nameSignup = document.getElementById('email-signup');
     const passwordSignup = document.getElementById('password-signup');
     const passwordConfirmSignup = document.getElementById(
@@ -127,47 +191,32 @@ document.addEventListener('click', (e) => {
         ? JSON.parse(localStorage['users'])
         : [];
 
-      for (let i = 0; i < users.length; i++) {
-        if (users[i]['userName'] === nameSignup.value) {
-          alert(`User Name ${nameSignup.value} exist!`);
-          return;
+      if (users.length !== 0) {
+        for (let i = 0; i < users.length; i++) {
+          if (users[i]['userName'] === nameSignup.value) {
+            alert(`User Name ${nameSignup.value} exist!`);
+            return;
+          }
         }
       }
     }
 
     if (passwordSignup.value === passwordConfirmSignup.value) {
-      var myHeaders = new Headers();
-      myHeaders.append('Content-Type', 'application/json');
+      tweetFeedApiService.apiSignUp();
 
-      var raw = JSON.stringify({
-        login: nameSignup.value,
-        password: passwordConfirmSignup.value,
-      });
-
-      var options = {
-        method: 'POST',
-        headers: myHeaders,
-        body: raw,
+      const userData = {
+        userName: nameSignup.value,
+        password: passwordSignup.value,
       };
 
-      fetch('https://jslabapi.datamola.com/registration', options)
-        .then((response) => response.text())
-        .then((result) => console.log(result))
-        .catch((error) => console.log('error', error));
+      const users = localStorage['users']
+        ? JSON.parse(localStorage['users'])
+        : [];
+      users.push(userData);
 
-      // const userData = {
-      //   userName: nameSignup.value,
-      //   password: passwordSignup.value,
-      //   passwordConfirm: passwordConfirmSignup.value,
-      // };
-
-      // const users = localStorage['users']
-      //   ? JSON.parse(localStorage['users'])
-      //   : [];
-      // users.push(userData);
-
-      // localStorage['users'] = JSON.stringify(users);
-    }
+      localStorage['users'] = JSON.stringify(users);
+      tweetsController.setCurrentUser(tweetsCollection.user);
+    } else alert('Passwords do not match!');
     // }
     // }
   }
@@ -176,7 +225,7 @@ document.addEventListener('click', (e) => {
 // ****************** ВХОД USER **********************
 //
 document.addEventListener('click', (e) => {
-  // e.preventDefault();
+  e.preventDefault();
   if (
     e.target &&
     e.target.className == 'common-button filter-button apply-filters login'
@@ -191,11 +240,15 @@ document.addEventListener('click', (e) => {
         if (users[i]['userName'] === nameLogin.value) {
           if (users[i]['password'] === passwordLogin.value) {
             tweetsCollection.user = nameLogin.value;
+
+            tweetFeedApiService.apiLogIn();
+
             tweetsController.setCurrentUser(tweetsCollection.user);
           }
         }
       }
     }
+    if (!tweetsCollection.user) alert('Incorrect name or password');
   }
 });
 //
@@ -233,9 +286,10 @@ document.addEventListener('click', (e) => {
 //
 let loadTweets = 10;
 document.addEventListener('click', (e) => {
-  if (e.target && e.target.className == 'common-button load-more') {
+  if (e.target && e.target.id == 'load-more') {
     tweetsController.getFeed(0, loadTweets);
     loadTweets += 10;
+    tweetsController.getFeed(0, loadTweets);
   }
 });
 //
@@ -246,6 +300,8 @@ document.addEventListener('click', (e) => {
     let text = document.getElementById('authorText').value;
     console.log(text);
     tweetsController.addTweet(text);
+    tweetFeedApiService.apiAddTweet(text);
+
     console.log(tweetsCollection);
   }
 });
@@ -270,9 +326,9 @@ let tweetsDom = document.getElementById('main');
 tweetsDom.addEventListener('click', (e) => {
   if (e.target.closest('.message-content__item')) {
     let aim = e.target.closest('.message-content__item');
-    let b = aim.querySelector('.message-content__inner');
-    if (!b || !b.dataset.id) return;
-    tweetsController.showTweet(b.dataset.id);
+    let element = aim.querySelector('.message-content__inner');
+    if (!element || !element.dataset.id) return;
+    tweetsController.showTweet(element.dataset.id);
   }
 });
 
@@ -282,13 +338,13 @@ tweetsDom.addEventListener('click', (e) => {
 document.addEventListener('click', (e) => {
   if (e.target && e.target.closest('#btn-back')) {
     console.log('back');
-    tweetsController.setCurrentUser(tweetsCollection.user);
+    // tweetsController.setCurrentUser(tweetsCollection.user);
+    tweetsController.getFeed();
   }
 });
 //
 // ****************** вешаем клик на кнопку УДАЛИТЬ твит ****************
 //
-
 document.addEventListener('click', (e) => {
   if (e.target && e.target.className == 'common-button delete-btn') {
     let aim = e.target.closest('.message-content__item');
@@ -316,3 +372,21 @@ document.addEventListener('click', (e) => {
     tweetsController.editTweet(b.dataset.id, text);
   }
 });
+//
+// *************  сброс фильтров  ******************
+//
+document.addEventListener('click', (e) => {
+  if (e.target && e.target.id == 'reset-btn') {
+    let searchName = document.getElementById('searchName');
+    let searchDate = document.getElementById('searchDate');
+    let searchDateTo = document.getElementById('searchDateTo');
+    let searchText = document.getElementById('searchText');
+    let searchHashTag = document.getElementById('searchHashTag');
+    searchName.value = '';
+    searchDate.value = '';
+    searchDateTo.value = '';
+    searchText.value = '';
+    searchHashTag.value = '';
+  }
+});
+//

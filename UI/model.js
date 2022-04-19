@@ -2,25 +2,25 @@ export const tweets = [
   {
     id: 't-20',
     text: 'SuperPupper #coffee !',
-    createdAt: new Date('2022-03-10T12:06:20'),
+    createdAt: new Date('2022-03-14T12:06:20'),
     author: 'Alex',
     comments: [
       {
         id: 't-20 c-1',
         text: 'I’m with you! Coffeman let’s go!!!',
-        createdAt: new Date('2022-03-10T12:06:25'),
+        createdAt: new Date('2022-03-14T12:06:25'),
         author: 'Boss',
       },
       {
         id: 't-20 c-2',
         text: 'Come on my dear Coffemans let’s go!!!',
-        createdAt: new Date('2022-03-10T12:07:25'),
+        createdAt: new Date('2022-03-14T12:07:25'),
         author: 'Mister-X',
       },
       {
         id: 't-20 c-3',
         text: 'Third comment!',
-        createdAt: new Date('2022-03-10T12:08:25'),
+        createdAt: new Date('2022-03-14T12:08:25'),
         author: 'Mister-Y',
       },
     ],
@@ -28,14 +28,14 @@ export const tweets = [
   {
     id: 't-19',
     text: 'coffee Go out for #tea #coffee !',
-    createdAt: new Date('2022-03-10T12:05:01'),
+    createdAt: new Date('2022-03-14T12:05:01'),
     author: 'Boss',
     comments: [],
   },
   {
     id: 't-18',
     text: ' Go out for #coffee !',
-    createdAt: new Date('2022-03-10T12:04:01'),
+    createdAt: new Date('2022-03-14T12:04:01'),
     author: 'Neo',
     comments: [
       {
@@ -49,7 +49,7 @@ export const tweets = [
   {
     id: 't-17',
     text: ' Go out for #coffee #fanta #sprite !',
-    createdAt: new Date('2022-03-10T12:03:01'),
+    createdAt: new Date('2022-03-13T12:03:01'),
     author: 'Boss',
     comments: [
       {
@@ -63,7 +63,7 @@ export const tweets = [
   {
     id: 't-16',
     text: ' Go out for #tea !',
-    createdAt: new Date('2022-03-10T12:02:15'),
+    createdAt: new Date('2022-03-13T12:02:15'),
     author: 'Anna',
     comments: [
       {
@@ -77,7 +77,7 @@ export const tweets = [
   {
     id: 't-15',
     text: ' Go out for #sprite !',
-    createdAt: new Date('2022-03-10T12:01:10'),
+    createdAt: new Date('2022-03-12T12:01:10'),
     author: 'Neo',
     comments: [
       {
@@ -91,7 +91,7 @@ export const tweets = [
   {
     id: 't-14',
     text: ' Go out for #coffee !',
-    createdAt: new Date('2022-03-10T12:00:20'),
+    createdAt: new Date('2022-03-12T12:00:20'),
     author: 'Anna',
     comments: [
       {
@@ -432,6 +432,7 @@ export class TweetCollection {
       }
 
       if (filterConfig?.dateTo) {
+        // console.log(filterConfig?.dateTo);
         dateToFlag = true;
 
         const dateToTweets = filterTweets.filter((obj) => {
@@ -579,8 +580,11 @@ export class TweetCollection {
 }
 const filterConfigObject = {
   // author: 'alex',
-  // dateFrom: new Date('2022-03-10T12:00:05'),
+  dateFrom: new Date('2022-03-12T12:00:05'),
   // dateTo: new Date('2022-03-10T12:00:15'),
   // hashtags: ['#spr', '#fan'],
   // text: ' ',
 };
+
+// const tweetCollection = new TweetCollection();
+// console.log(tweetCollection.getPage());

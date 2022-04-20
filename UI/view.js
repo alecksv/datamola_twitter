@@ -56,8 +56,12 @@ export class TweetFeedView {
   // массив твитов
   display(user, collection) {
     let main = document.getElementById(this.containerId);
-    main.innerHTML = `<div class="wrapper">
-        <div class="main-content">
+    console.log(main);
+
+    main.innerHTML = `
+    <div class="wrapper">
+      <div class="main-content">
+
           <section  class="message-content">
             <div class="message-content__wrapper">
               <article id="new-tweet-area" class="message-content__item disableColor">
@@ -91,84 +95,22 @@ export class TweetFeedView {
           </section>
 
 
-          <section class="filter-content">
-            <article class="filter-content__item">
-              <form class="filter-content__form" action="#" name="filterForm">
-                <h2 class="filter-content__title">Filter out messages</h2>
+           
 
-                <label class="filter-content__option" for="searchName"
-                  >Name</label
-                >
-                <input
-                  required
-                  id="searchName"
-                  class="filter-content__input"
-                  name="filterName"
-                  placeholder="Print a name"
-                  type="text"
-                />
+          
 
-                <label class="filter-content__option" for="searchDate"
-                  >Date</label
-                >
-                <input
-                  required
-                  id="searchDate"
-                  class="filter-content__input second"
-                  name="filterDateStart"
-                  type="date"
-                />
-                <input
-                  required
-                  id="searchDate"
-                  class="filter-content__input"
-                  name="filterDateEnd"
-                  type="date"
-                />
 
-                <label class="filter-content__option" for="searchText"
-                  >Text</label
-                >
-                <input
-                  required
-                  id="searchText"
-                  class="filter-content__input"
-                  name="filterText"
-                  placeholder="Print a searching text"
-                  type="text"
-                />
+         
 
-                <label class="filter-content__option" for="searchHashTag"
-                  >#tag</label
-                >
-                <input
-                  required
-                  id="searchHashTag"
-                  class="filter-content__input"
-                  name="filterHashTag"
-                  placeholder="#datamola, #thankyou"
-                  type="text"
-                />
-
-                <div class="filter-content__button">
-                  <button class="common-button filter-button" type="submit">
-                    Reset filters
-                  </button>
-                  <button
-                    class="common-button filter-button apply-filters"
-                    type="submit"
-                  >
-                    Apply filters
-                  </button>
-                </div>
-              </form>
-            </article>
-          </section>
+          
+        
+          </div>
+            <div class="wrapper__button">
+              <button id="load-more" class="common-button">Load more</button>
+            </div>
+          
         </div>
-        <div class="wrapper__button">
-          <button class="common-button load-more">Load more</button>
-        </div>
-      </div>`;
+      `;
 
     for (let i = 0; i < collection.length; i++) {
       let tweetRender = document.createElement('article');
@@ -226,11 +168,14 @@ export class FilterView {
   constructor(containerId) {
     this.containerId = containerId;
   }
-  display() {
+  display(filterConfig) {
+    const messageContent = document.querySelector('.message-content');
     const filterContainer = document.createElement('section');
     filterContainer.id = `${this.containerId}`;
     filterContainer.classList.add(this.containerId);
     let main = document.querySelector('.main-content');
+    console.log(main);
+
     main.append(filterContainer);
     let filterArticle = `<article class="filter-content__item">
               <form class="filter-content__form" action="#" name="filterForm">
@@ -260,7 +205,7 @@ export class FilterView {
                 />
                 <input
                   required
-                  id="searchDate"
+                  id="searchDateTo"
                   class="filter-content__input"
                   name="filterDateEnd"
                   type="date"
@@ -291,12 +236,12 @@ export class FilterView {
                 />
 
                 <div class="filter-content__button">
-                  <button class="common-button filter-button" type="submit">
+                  <button id="reset-btn" class="common-button filter-button" type="submit">
                     Reset filters
                   </button>
-                  <button
+                  <button id="apply-btn"
                     class="common-button filter-button apply-filters"
-                    type="submit"
+                   
                   >
                     Apply filters
                   </button>
@@ -304,6 +249,18 @@ export class FilterView {
               </form>
             </article>`;
     filterContainer.innerHTML = filterArticle;
+    messageContent.after(filterContainer);
+    const searchName = document.getElementById('searchName');
+    let searchDate = document.getElementById('searchDate');
+    let searchDateTo = document.getElementById('searchDateTo');
+    let searchText = document.getElementById('searchText');
+    let searchHashTag = document.getElementById('searchHashTag');
+
+    searchName.value = filterConfig.author;
+    searchDate.value = filterConfig.dateFrom;
+    searchDateTo.value = filterConfig.dateTo;
+    searchText.value = filterConfig.hashtags;
+    searchHashTag.value = filterConfig.text;
   }
 }
 
@@ -311,9 +268,8 @@ export class TweetView {
   constructor(containerId) {
     this.containerId = containerId;
   }
-  display(user, tweet) {
+  display(user, tweet, id) {
     const innerContainer = document.querySelector('main');
-    console.log(tweet);
 
     const oneTweet = `
       <div class="twit-wrapper">
@@ -366,7 +322,7 @@ export class TweetView {
 
             
 
-            <article class="message-content__item">
+            <article id="change-visible" class="message-content__item unvisible-block">
               <form
                 class="message-content__form"
                 action="#"
@@ -377,14 +333,14 @@ export class TweetView {
                 >
                 <textarea
                   required
-                  id="authorName"
+                  data-id=${id}
                   class="message-content__textarea"
                   name="authorMessageText"
                   placeholder="Print your reply..."
                   maxlength="280"
                 ></textarea>
                 <div class="message-content__wrap-button">
-                  <button class="common-button" type="submit">Reply</button>
+                  <button  class="common-button reply-btn" type="submit">Reply</button>
                 </div>
               </form>
             </article>
@@ -398,7 +354,6 @@ export class TweetView {
 
     for (let i = 0; i < tweet.comments.length; i++) {
       let mainTweet = document.querySelector('.message-content__item');
-      console.log(mainTweet);
       let commentWrap = document.createElement('article');
       commentWrap.classList.add('message-content__item');
 
@@ -454,13 +409,13 @@ export class Login {
               class="login-content__input"
               name="filterName"
               placeholder="password"
-              type="text"
+              type="password"
             />
 
             <div class="filter-content__button login-confirm">
               <button
                 class="common-button filter-button apply-filters login"
-                type="submit"
+               
               >
                 Confirm
               </button>
@@ -512,7 +467,7 @@ export class Signup {
               class="login-content__input"
               name="filterName"
               placeholder="password"
-              type="text"
+              type="password"
             />
 
             <input
@@ -521,13 +476,13 @@ export class Signup {
               class="login-content__input"
               name="filterName"
               placeholder="Confirm your password"
-              type="text"
+              type="password"
             />
 
             <div class="filter-content__button login-confirm">
               <button
-                class="common-button filter-button apply-filters"
-                type="submit"
+                class="common-button filter-button apply-filters confirm-btn"
+                
               >
                 Confirm
               </button>
@@ -542,5 +497,35 @@ export class Signup {
           </div>
         </div>
       </div>`;
+  }
+}
+
+export class Error {
+  constructor(containerId) {
+    this.containerId = containerId;
+  }
+  display(error) {
+    let main = document.getElementById(this.containerId);
+    let headerLoginBtn = document.getElementById('header-login-btn');
+    headerLoginBtn.classList.add('hiddenBtn');
+    main.innerHTML = ` <div class="error-wrapper">
+            <div class="error-content">
+                <div class="error-content__image">
+                    <img src="../img/baloon400.png" alt="baloon">
+                </div>
+                <div class="error-content__message">
+                    <h2 class="error-content__title">Whoops!</h2>
+                    <div class="error-content__alert">
+                        <p class="error-content__grey">Please try it late. Server did not find data. </p>
+
+                    </div>
+                    <div class="error-content__return">
+                        <p>Something went wrong. Follow to
+                            <a href="#" class="link-login-text link-mainpage">main page</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>`;
   }
 }

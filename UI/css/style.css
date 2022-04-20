@@ -5,6 +5,7 @@
 @import url('../css/sections-style/twit/twit.css');
 @import url('../css/sections-style/login/login.css');
 @import url('../css/sections-style/login/signup.css');
+@import url('../css/sections-style/error/error.css');
 
 * {
   margin: 0;
@@ -96,4 +97,7 @@ h2 {
 }
 .show-btns {
   visibility: visible;
+}
+.unvisible-block {
+  visibility: hidden;
 }

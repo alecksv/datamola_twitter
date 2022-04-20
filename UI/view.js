@@ -58,23 +58,6 @@ export class TweetFeedView {
     let main = document.getElementById(this.containerId);
     console.log(main);
 
-    // let wrapper = document.createElement('div');
-    // wrapper.classList.add('wrapper');
-    // console.log(main);
-
-    // let mainContent = document.createElement('div');
-    // mainContent.classList.add('main-content');
-    // console.log(main);
-
-    // let wrapperButton = document.createElement('div');
-    // wrapperButton.classList.add('wrapper__button');
-    // wrapperButton.innerHTML = `<button id="load-more" class="common-button load-more">Load more</button>`;
-    // console.log(main);
-
-    // main.append(wrapper);
-    // wrapper.append(mainContent);
-    // wrapper.append(wrapperButton);
-    // console.log(main);
     main.innerHTML = `
     <div class="wrapper">
       <div class="main-content">
@@ -517,78 +500,32 @@ export class Signup {
   }
 }
 
-{
-  /* <section class="filter-content">
-  <article class="filter-content__item">
-    <form class="filter-content__form" action="#" name="filterForm">
-      <h2 class="filter-content__title">Filter out messages</h2>
+export class Error {
+  constructor(containerId) {
+    this.containerId = containerId;
+  }
+  display(error) {
+    let main = document.getElementById(this.containerId);
+    let headerLoginBtn = document.getElementById('header-login-btn');
+    headerLoginBtn.classList.add('hiddenBtn');
+    main.innerHTML = ` <div class="error-wrapper">
+            <div class="error-content">
+                <div class="error-content__image">
+                    <img src="../img/baloon400.png" alt="baloon">
+                </div>
+                <div class="error-content__message">
+                    <h2 class="error-content__title">Whoops!</h2>
+                    <div class="error-content__alert">
+                        <p class="error-content__grey">Please try it late. Server did not find data. </p>
 
-      <label class="filter-content__option" for="searchName">
-        Name
-      </label>
-      <input
-        required
-        id="searchName"
-        class="filter-content__input"
-        name="filterName"
-        placeholder="Print a name"
-        type="text"
-      />
-
-      <label class="filter-content__option" for="searchDate">
-        Date
-      </label>
-      <input
-        required
-        id="searchDate"
-        class="filter-content__input second"
-        name="filterDateStart"
-        type="date"
-      />
-      <input
-        required
-        id="searchDateTo"
-        class="filter-content__input"
-        name="filterDateEnd"
-        type="date"
-      />
-
-      <label class="filter-content__option" for="searchText">
-        Text
-      </label>
-      <input
-        required
-        id="searchText"
-        class="filter-content__input"
-        name="filterText"
-        placeholder="Print a searching text"
-        type="text"
-      />
-
-      <label class="filter-content__option" for="searchHashTag">
-        #tag
-      </label>
-      <input
-        required
-        id="searchHashTag"
-        class="filter-content__input"
-        name="filterHashTag"
-        placeholder="#datamola, #thankyou"
-        type="text"
-      />
-
-      <div class="filter-content__button">
-        <button class="common-button filter-button" type="submit">
-          Reset filters
-        </button>
-        <button
-          id="apply-btn"
-          class="common-button filter-button apply-filters"
-        >
-          Apply filters
-        </button>
-      </div>
-    </form>
-  </article>
-</section>; */
+                    </div>
+                    <div class="error-content__return">
+                        <p>Something went wrong. Follow to
+                            <a href="#" class="link-login-text link-mainpage">main page</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+  }
 }

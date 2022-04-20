@@ -585,6 +585,3 @@ const filterConfigObject = {
   // hashtags: ['#spr', '#fan'],
   // text: ' ',
 };
-
-// const tweetCollection = new TweetCollection();
-// console.log(tweetCollection.getPage());

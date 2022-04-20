@@ -7,6 +7,7 @@ import {
   TweetView,
   Login,
   Signup,
+  Error,
 } from './view.js';
 import { TweetFeedApiService } from './api.js';
 
@@ -16,6 +17,7 @@ const filter = new FilterView('filter-content');
 const tweet = new TweetView('tweet');
 const login = new Login('main');
 const signup = new Signup('main');
+const error = new Error('main');
 const tweetsCollection = new TweetCollection(tweets);
 const tweetFeedView = new TweetFeedView('main');
 tweetsCollection.user = '';
@@ -29,28 +31,10 @@ class TweetsController {
   setCurrentUser = (user) => {
     header.display(user);
     footer.display();
-
     this.getFeed();
   };
 
   getFeed = function (skip, top, filterConfig) {
-    // const collection = tweetsCollection.getPage(skip, top, filterConfig);
-
-    async function getCollection() {
-      let response = await tweetFeedApiService.apiCollectionTweets();
-      console.log(response);
-      let collection = await response.json();
-      console.log(collection);
-      return collection;
-    }
-    const collection = getCollection();
-    console.log(collection);
-    tweetFeedView.display(tweetsCollection.user, collection);
-
-    //
-    // перескакивает после 39 строки на 62 а только потом на 45??????????????????
-    //
-
     if (!filterConfig) {
       filterConfig = {
         author: '',
@@ -60,28 +44,36 @@ class TweetsController {
         text: '',
       };
     }
-    filter.display(filterConfig);
 
-    if (collection.length < 10) {
-      let loadMoreBtn = document.getElementById('load-more');
-      loadMoreBtn.classList.add('hiddenBtn');
-    }
+    const collection = tweetFeedApiService
+      .apiCollectionTweets()
+      .then((response) => response.json())
+      .then((collection) => {
+        tweetFeedView.display(tweetsCollection.user, collection);
+        filter.display(filterConfig);
+        if (collection.length < 10) {
+          let loadMoreBtn = document.getElementById('load-more');
+          loadMoreBtn.classList.add('hiddenBtn');
+        }
 
-    console.log(collection);
-    const authorText = document.getElementById('authorText');
-    const btnAddMessage = document.getElementById('add-message');
-    const newTweetArea = document.getElementById('new-tweet-area');
+        console.log(collection);
+        const authorText = document.getElementById('authorText');
+        const btnAddMessage = document.getElementById('add-message');
+        const newTweetArea = document.getElementById('new-tweet-area');
 
-    if (tweetsCollection.user) {
-      authorText.removeAttribute('disabled');
-      btnAddMessage.removeAttribute('disabled');
-      btnAddMessage.classList.remove('disableColor');
-      newTweetArea.classList.remove('disableColor');
-    }
+        if (tweetsCollection.user) {
+          authorText.removeAttribute('disabled');
+          btnAddMessage.removeAttribute('disabled');
+          btnAddMessage.classList.remove('disableColor');
+          newTweetArea.classList.remove('disableColor');
+        }
+      })
+      .catch((e) => error.display(e));
   };
 
   addTweet = (text) => {
-    tweetsCollection.add(text);
+    // tweetFeedApiService.apiAddTweet(text);
+    // tweetsCollection.add(text);
     this.getFeed();
   };
 
@@ -92,7 +84,9 @@ class TweetsController {
   };
 
   removeTweet = (id) => {
+    // const tweetRemove = tweetsCollection.remove(id);
     const tweetRemove = tweetsCollection.remove(id);
+
     console.log(tweetRemove);
     this.getFeed();
   };
@@ -299,9 +293,8 @@ document.addEventListener('click', (e) => {
   if (e.target && e.target.id == 'add-message') {
     let text = document.getElementById('authorText').value;
     console.log(text);
-    tweetsController.addTweet(text);
     tweetFeedApiService.apiAddTweet(text);
-
+    tweetsController.addTweet(text);
     console.log(tweetsCollection);
   }
 });

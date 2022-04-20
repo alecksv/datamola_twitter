@@ -3,12 +3,13 @@ export class TweetFeedApiService {
   requestMethods = {
     post: 'POST',
     get: 'GET',
+    delete: 'DELETE',
   };
   endpoints = {
     registration: 'registration',
     login: 'login',
     tweet: 'tweet',
-    collection: 'tweet?from=0&count=1',
+    collection: 'tweet?from=0',
   };
 
   constructor(url) {
@@ -108,20 +109,17 @@ export class TweetFeedApiService {
     login();
   }
 
-  apiCollectionTweets(url = this.url, method = this.requestMethods.get) {
-    function request(endpoint, options) {
-      return fetch(url + endpoint, options);
+  async apiCollectionTweets(url = this.url, method = this.requestMethods.get) {
+    let response = await fetch(
+      url + this.endpoints.collection,
+      this.getOptions(null, true, method)
+    );
+    if (response.ok) {
+      return response;
+    } else {
+      return;
     }
-
-    const tweetRequest = () => {
-      const option = this.getOptions(null, true, method);
-      console.log(option);
-      return request(this.endpoints.collection, option);
-    };
-
-    async function addCollectionTweet() {
-      return await tweetRequest();
-    }
-    return addCollectionTweet();
   }
+
+  apiDeleteTweet(id) {}
 }

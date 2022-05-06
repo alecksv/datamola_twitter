@@ -12,7 +12,7 @@ export class HeaderView {
             <a href="#" title="home">
               <object
                 type="image/svg+xml"
-                data="../img/logo hichat_elips.svg"
+                data="../img/logo_hichat_elips.svg"
                 width="79"
                 height="48"
               >

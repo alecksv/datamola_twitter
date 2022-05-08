@@ -12,7 +12,7 @@ export class HeaderView {
             <a href="#" title="home">
               <object
                 type="image/svg+xml"
-                data="../img/logo_hichat_elips.svg"
+                data="./img/logo_hichat_elips.svg"
                 width="79"
                 height="48"
               >
@@ -143,7 +143,7 @@ export class TweetFeedView {
                     <div class="message-content__svg">
                       <object
                         type="image/svg+xml"
-                        data="../img/reply.svg"
+                        data="./img/reply.svg"
                         width="20"
                         height="20"
                       >
